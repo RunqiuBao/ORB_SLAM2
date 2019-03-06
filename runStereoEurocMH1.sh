@@ -1,0 +1,1 @@
+./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml /home/runqiu/todai/orb-slam/ORB_SLAM2/Examples/Stereo/mav0/cam0/data /home/runqiu/todai/orb-slam/ORB_SLAM2/Examples/Stereo/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt
