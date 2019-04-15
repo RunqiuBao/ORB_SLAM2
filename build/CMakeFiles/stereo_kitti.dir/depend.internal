@@ -46,7 +46,7 @@ CMakeFiles/stereo_kitti.dir/Examples/Stereo/stereo_kitti.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/System.h
  ../include/Tracking.h
  ../include/Viewer.h

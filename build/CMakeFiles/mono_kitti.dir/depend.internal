@@ -46,7 +46,7 @@ CMakeFiles/mono_kitti.dir/Examples/Monocular/mono_kitti.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/System.h
  ../include/Tracking.h
  ../include/Viewer.h

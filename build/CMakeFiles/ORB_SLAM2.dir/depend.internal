@@ -396,7 +396,7 @@ CMakeFiles/ORB_SLAM2.dir/src/Frame.cc.o
  ../include/Map.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/Frame.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
@@ -771,7 +771,7 @@ CMakeFiles/ORB_SLAM2.dir/src/FrameDrawer.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/System.h
  ../include/Tracking.h
  ../include/Viewer.h
@@ -1214,7 +1214,7 @@ CMakeFiles/ORB_SLAM2.dir/src/Initializer.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  ../include/Optimizer.h
  ../include/System.h
@@ -1654,7 +1654,7 @@ CMakeFiles/ORB_SLAM2.dir/src/KeyFrame.cc.o
  ../include/Map.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/KeyFrame.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
@@ -2000,7 +2000,7 @@ CMakeFiles/ORB_SLAM2.dir/src/KeyFrameDatabase.cc.o
  ../include/Map.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/KeyFrameDatabase.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/viz.hpp
@@ -2176,7 +2176,7 @@ CMakeFiles/ORB_SLAM2.dir/src/LocalMapping.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  ../include/Optimizer.h
  ../include/System.h
@@ -2621,7 +2621,7 @@ CMakeFiles/ORB_SLAM2.dir/src/LoopClosing.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  ../include/Optimizer.h
  ../include/Sim3Solver.h
@@ -3036,7 +3036,7 @@ CMakeFiles/ORB_SLAM2.dir/src/Map.cc.o
  ../include/Map.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/Map.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/viz.hpp
@@ -3184,7 +3184,7 @@ CMakeFiles/ORB_SLAM2.dir/src/MapDrawer.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/MapDrawer.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/viz.hpp
@@ -3568,7 +3568,7 @@ CMakeFiles/ORB_SLAM2.dir/src/MapPoint.cc.o
  ../include/Map.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/MapPoint.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
@@ -3701,9 +3701,9 @@ CMakeFiles/ORB_SLAM2.dir/src/MapPoint.cc.o
  /usr/local/lib/cmake/Pangolin/../../../include/opencv2/videostab/ring_buffer.hpp
  /usr/local/lib/cmake/Pangolin/../../../include/opencv2/videostab/stabilizer.hpp
  /usr/local/lib/cmake/Pangolin/../../../include/opencv2/videostab/wobble_suppression.hpp
-CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o
- ../include/ORBextractor.h
- /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor.cc
+CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o
+ ../include/ORBextractor_mask.h
+ /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor_mask.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/viz.hpp
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/viz/types.hpp
@@ -3852,7 +3852,7 @@ CMakeFiles/ORB_SLAM2.dir/src/ORBmatcher.cc.o
  ../include/Map.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBmatcher.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
@@ -4055,7 +4055,7 @@ CMakeFiles/ORB_SLAM2.dir/src/Optimizer.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/Optimizer.h
  ../include/System.h
  ../include/Tracking.h
@@ -4538,7 +4538,7 @@ CMakeFiles/ORB_SLAM2.dir/src/PnPsolver.cc.o
  ../include/Map.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/PnPsolver.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/PnPsolver.cc
  /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
@@ -4687,7 +4687,7 @@ CMakeFiles/ORB_SLAM2.dir/src/Sim3Solver.cc.o
  ../include/Map.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  ../include/Sim3Solver.h
  /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/Sim3Solver.cc
@@ -4868,7 +4868,7 @@ CMakeFiles/ORB_SLAM2.dir/src/System.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/System.h
  ../include/Tracking.h
  ../include/Viewer.h
@@ -5311,7 +5311,7 @@ CMakeFiles/ORB_SLAM2.dir/src/Tracking.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/ORBmatcher.h
  ../include/Optimizer.h
  ../include/PnPsolver.h
@@ -5755,7 +5755,7 @@ CMakeFiles/ORB_SLAM2.dir/src/Viewer.cc.o
  ../include/MapDrawer.h
  ../include/MapPoint.h
  ../include/ORBVocabulary.h
- ../include/ORBextractor.h
+ ../include/ORBextractor_mask.h
  ../include/System.h
  ../include/Tracking.h
  ../include/Viewer.h

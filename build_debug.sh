@@ -29,3 +29,9 @@ mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Debug
 make -j6
+
+cd ..
+
+echo "Converting vocabulary to binary"
+./tools/bin_vocabulary
+

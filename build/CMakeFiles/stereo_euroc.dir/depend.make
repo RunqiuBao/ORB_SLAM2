@@ -45,7 +45,7 @@ CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/Map.h
 CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/MapDrawer.h
 CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/MapPoint.h
 CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/ORBVocabulary.h
-CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/ORBextractor.h
+CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/ORBextractor_mask.h
 CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/System.h
 CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/Tracking.h
 CMakeFiles/stereo_euroc.dir/Examples/Stereo/stereo_euroc.cc.o: ../include/Viewer.h

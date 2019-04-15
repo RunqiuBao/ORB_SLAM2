@@ -35,6 +35,7 @@
 
 using namespace std;
 
+//void recordTracking(cv::Mat imTf);
 void LoadImages(const string &strPathToSequence, vector<string> &vstrImageLeft,
                 vector<string> &vstrImageRight, vector<double> &vTimestamps, vector<string> &vImgNames);
 
@@ -51,7 +52,7 @@ int main(int argc, char **argv)
     vector<string> vstrImageRight;
     vector<double> vTimestamps;
     vector<string> vImgNames;
-    char *argvtemp[4]={" ","Vocabulary/ORBvoc.bin","Examples/Stereo/gopro34.yaml","Examples/Stereo/mymav-stereo-do"};
+    char *argvtemp[4]={" ","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro34.yaml","/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-stereo-do"};
  
     LoadImages(string(argvtemp[3]), vstrImageLeft, vstrImageRight, vTimestamps, vImgNames);
 
@@ -70,12 +71,14 @@ int main(int argc, char **argv)
 
     // Main loop
     cv::Mat imLeft, imRight;
+    // cv::Mat imTf;//runqiu:get the transform of current frame
+    // vector<std::string> tfRecordLine;
     for(int ni=0; ni<nImages; ni++)
     {
         // Read left and right images from file
         imLeft = cv::imread(vstrImageLeft[ni],CV_LOAD_IMAGE_UNCHANGED);
         imRight = cv::imread(vstrImageRight[ni],CV_LOAD_IMAGE_UNCHANGED);
-        cout << endl << std::to_string(ni)+" finish read!" << endl;
+        //cout << endl << std::to_string(ni)+" finish read!" << endl;
         double tframe = vTimestamps[ni];
 
         if(imLeft.empty())
@@ -92,7 +95,11 @@ int main(int argc, char **argv)
 #endif
 
         // Pass the images to the SLAM system
-        SLAM.TrackStereo(imLeft,imRight,tframe);
+        SLAM.TrackStereo(imLeft,imRight,tframe,ni);//runqiu:for using hard-coded maskFunction,change timestamp to frame number
+        // cv::Mat Rwc = imTf.rowRange(0,3).colRange(0,3).t();//rotation information
+        // cv::Mat twc = -Rwc*imTf.rowRange(0,3).col(3);//translation information
+        // vector<float> q = ORB_SLAM2::Converter::toQuaternion(Rwc);
+        // vector<float> t = twc.cols;
 
 #ifdef COMPILEDWITHC11
         std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();

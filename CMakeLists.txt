@@ -59,7 +59,7 @@ src/System.cc
 src/Tracking.cc
 src/LocalMapping.cc
 src/LoopClosing.cc
-src/ORBextractor.cc
+src/ORBextractor_mask.cc
 src/ORBmatcher.cc
 src/FrameDrawer.cc
 src/Converter.cc

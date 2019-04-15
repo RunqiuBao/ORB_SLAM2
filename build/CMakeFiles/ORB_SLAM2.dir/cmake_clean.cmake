@@ -3,7 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ORB_SLAM2.dir/src/Tracking.cc.o"
   "CMakeFiles/ORB_SLAM2.dir/src/LocalMapping.cc.o"
   "CMakeFiles/ORB_SLAM2.dir/src/LoopClosing.cc.o"
-  "CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o"
+  "CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o"
   "CMakeFiles/ORB_SLAM2.dir/src/ORBmatcher.cc.o"
   "CMakeFiles/ORB_SLAM2.dir/src/FrameDrawer.cc.o"
   "CMakeFiles/ORB_SLAM2.dir/src/Converter.cc.o"

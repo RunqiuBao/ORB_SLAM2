@@ -33,7 +33,7 @@
 #include"Frame.h"
 #include "ORBVocabulary.h"
 #include"KeyFrameDatabase.h"
-#include"ORBextractor.h"
+#include"ORBextractor_mask.h"
 #include "Initializer.h"
 #include "MapDrawer.h"
 #include "System.h"
@@ -58,7 +58,7 @@ public:
              KeyFrameDatabase* pKFDB, const string &strSettingPath, const int sensor);
 
     // Preprocess the input and call Track(). Extract features and performs stereo matching.
-    cv::Mat GrabImageStereo(const cv::Mat &imRectLeft,const cv::Mat &imRectRight, const double &timestamp);
+    cv::Mat GrabImageStereo(const cv::Mat &imRectLeft,const cv::Mat &imRectRight, const double &timestamp, const int &nFrame);
     cv::Mat GrabImageRGBD(const cv::Mat &imRGB,const cv::Mat &imD, const double &timestamp);
     cv::Mat GrabImageMonocular(const cv::Mat &im, const double &timestamp);
 
@@ -115,13 +115,13 @@ public:
 
     void Reset();
 
-protected:
+protected: 
 
     // Main tracking function. It is independent of the input sensor.
     void Track();
 
     // Map initialization for stereo and RGB-D
-    void StereoInitialization();
+    void StereoInitialization();//runqiu:need mask
 
     // Map initialization for monocular
     void MonocularInitialization();
@@ -155,8 +155,9 @@ protected:
     LoopClosing* mpLoopClosing;
 
     //ORB
-    ORBextractor* mpORBextractorLeft, *mpORBextractorRight;
-    ORBextractor* mpIniORBextractor;
+    ORBextractormask* mpORBextractorRight;
+    ORBextractormask* mpORBextractorLeft;
+    ORBextractormask* mpIniORBextractor;//runqiu:for mono
 
     //BoW
     ORBVocabulary* mpORBVocabulary;

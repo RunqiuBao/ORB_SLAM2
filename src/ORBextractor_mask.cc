@@ -60,7 +60,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <vector>
 
-#include "ORBextractor.h"
+#include "ORBextractor_mask.h"
 
 
 using namespace cv;
@@ -407,7 +407,7 @@ static int bit_pattern_31_[256*4] =
     -1,-6, 0,-11/*mean (0.127148), correlation (0.547401)*/
 };
 
-ORBextractor::ORBextractor(int _nfeatures, float _scaleFactor, int _nlevels,
+ORBextractormask::ORBextractormask(int _nfeatures, float _scaleFactor, int _nlevels,
          int _iniThFAST, int _minThFAST):
     nfeatures(_nfeatures), scaleFactor(_scaleFactor), nlevels(_nlevels),
     iniThFAST(_iniThFAST), minThFAST(_minThFAST)
@@ -418,7 +418,7 @@ ORBextractor::ORBextractor(int _nfeatures, float _scaleFactor, int _nlevels,
     mvLevelSigma2[0]=1.0f;
     for(int i=1; i<nlevels; i++)
     {
-        mvScaleFactor[i]=mvScaleFactor[i-1]*scaleFactor;
+        mvScaleFactor[i]=mvScaleFactor[i-1]*scaleFactor;//runqiu:scaleFactor=1.2
         mvLevelSigma2[i]=mvScaleFactor[i]*mvScaleFactor[i];
     }
 
@@ -536,7 +536,7 @@ void ExtractorNode::DivideNode(ExtractorNode &n1, ExtractorNode &n2, ExtractorNo
 
 }
 
-vector<cv::KeyPoint> ORBextractor::DistributeOctTree(const vector<cv::KeyPoint>& vToDistributeKeys, const int &minX,
+vector<cv::KeyPoint> ORBextractormask::DistributeOctTree(const vector<cv::KeyPoint>& vToDistributeKeys, const int &minX,
                                        const int &maxX, const int &minY, const int &maxY, const int &N, const int &level)
 {
     // Compute how many initial nodes   
@@ -762,11 +762,11 @@ vector<cv::KeyPoint> ORBextractor::DistributeOctTree(const vector<cv::KeyPoint>&
     return vResultKeys;
 }
 
-void ORBextractor::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKeypoints)
+void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKeypoints, int nFrame, int flag)
 {
-    allKeypoints.resize(nlevels);//rujnqiu:nlevels is the number of pyramid levels
+    allKeypoints.resize(nlevels);
 
-    const float W = 30;//runqiu:grid size
+    const float W = 30;
 
     for (int level = 0; level < nlevels; ++level)
     {
@@ -821,7 +821,28 @@ void ORBextractor::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKeypoin
                     {
                         (*vit).pt.x+=j*wCell;
                         (*vit).pt.y+=i*hCell;
-                        vToDistributeKeys.push_back(*vit);
+                        std::vector<float> maskRect;
+                        maskRect = maskFunction(nFrame,0);
+                        float llx=maskRect[0];
+                        float lly=maskRect[1];
+                        float urx=maskRect[2];
+                        float ury=maskRect[3];
+                        float imgSizeX=(float)818;
+                        float imgSizeY=(float)478;
+                        float currentLevelX=mvImagePyramid[level].cols;
+                        float currentLevelY=mvImagePyramid[level].rows;
+                        //runqiu:scale the mask to current level of pyramid
+                        llx=llx*currentLevelX/imgSizeX;
+                        lly=lly*currentLevelY/imgSizeY;
+                        urx=urx*currentLevelX/imgSizeX;
+                        ury=ury*currentLevelY/imgSizeY;
+                        if((*vit).pt.x>=llx && (*vit).pt.x<=urx && (*vit).pt.y>=ury && (*vit).pt.y<=lly && flag==0)
+                            continue;
+                        else
+                        {
+                            vToDistributeKeys.push_back(*vit);//runqiu:add DO filter here!!
+                        }
+                        
                     }
                 }
 
@@ -852,7 +873,7 @@ void ORBextractor::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKeypoin
         computeOrientation(mvImagePyramid[level], allKeypoints[level], umax);
 }
 
-void ORBextractor::ComputeKeyPointsOld(std::vector<std::vector<KeyPoint> > &allKeypoints)//runqiu:not using 
+void ORBextractormask::ComputeKeyPointsOld(std::vector<std::vector<KeyPoint> > &allKeypoints)
 {
     allKeypoints.resize(nlevels);
 
@@ -1040,8 +1061,8 @@ static void computeDescriptors(const Mat& image, vector<KeyPoint>& keypoints, Ma
         computeOrbDescriptor(keypoints[i], image, &pattern[0], descriptors.ptr((int)i));
 }
 
-void ORBextractor::operator()( InputArray _image, InputArray _mask, vector<KeyPoint>& _keypoints,
-                      OutputArray _descriptors)
+void ORBextractormask::operator()( InputArray _image, InputArray _mask, vector<KeyPoint>& _keypoints,
+                      OutputArray _descriptors, int nFrame, int flag)
 { 
     if(_image.empty())
         return;
@@ -1053,7 +1074,7 @@ void ORBextractor::operator()( InputArray _image, InputArray _mask, vector<KeyPo
     ComputePyramid(image);
 
     vector < vector<KeyPoint> > allKeypoints;
-    ComputeKeyPointsOctTree(allKeypoints);
+    ComputeKeyPointsOctTree(allKeypoints,nFrame,flag);
     //ComputeKeyPointsOld(allKeypoints);
 
     Mat descriptors;
@@ -1104,7 +1125,7 @@ void ORBextractor::operator()( InputArray _image, InputArray _mask, vector<KeyPo
     }
 }
 
-void ORBextractor::ComputePyramid(cv::Mat image)
+void ORBextractormask::ComputePyramid(cv::Mat image)
 {
     for (int level = 0; level < nlevels; ++level)
     {
@@ -1129,6 +1150,673 @@ void ORBextractor::ComputePyramid(cv::Mat image)
         }
     }
 
+}
+
+//runqiu:maskFunction
+std::vector<float> ORBextractormask::maskFunction(int frameNumber, int flag){
+    if(flag == 0){//runqiu:left camera
+                std::vector<float> maskRect;
+                float temp[4]={0};
+                int current_frame = frameNumber;
+                if(current_frame>=295 && current_frame<=570)
+                    {
+                        temp[0]=(float)0;
+                        temp[1]=(float)300;
+                        temp[2]=(float)(450)*(current_frame-295)/(570-295);
+                        temp[3]=(float)0;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }        
+                else if(current_frame>570 && current_frame<=740)
+                    {
+                        temp[0]=(float)(390-0)*(current_frame-570)/(740-570);
+                        temp[1]=(float)(310-300)*(current_frame-570)/(740-570)+300;
+                        temp[2]=(float)(818-500)*(current_frame-570)/(740-570)+500;
+                        temp[3]=(float)(0-0)*(current_frame-570)/(740-570);
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>740 and current_frame<=900)
+                    {
+                        temp[0]=(float)(550-390)*(current_frame-740)/(900-740)+390;
+                        temp[1]=(float)320;
+                        temp[2]=(float)818;
+                        temp[3]=(float)0;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }
+                //first round
+                else if(current_frame>900 && current_frame<=1300)
+                    {
+                        int t1=900;
+                        int t2=1300;
+                        int llx1=550;
+                        int lly1=320;
+                        int llx2=390;
+                        int lly2=320;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }
+                else if(current_frame>1300 && current_frame<=1570)
+                    {
+                        int t1=1300;
+                        int t2=1570;
+                        int llx1=390;
+                        int lly1=320;
+                        int llx2=0;
+                        int lly2=343;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=500;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }
+                else if(current_frame>1570 && current_frame<=1770)
+                    {
+                        int t1=1570;
+                        int t2=1770;
+                        int llx1=0;
+                        int lly1=343;
+                        int llx2=0;
+                        int lly2=320;
+                        int urx1=500;
+                        int ury1=0;
+                        int urx2=350;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }        
+                else if(current_frame>1770 && current_frame<=1920)
+                    {
+                        int t1=1770;
+                        int t2=1920;
+                        int llx1=0;
+                        int lly1=343;
+                        int llx2=0;
+                        int lly2=320;
+                        int urx1=350;
+                        int ury1=0;
+                        int urx2=450;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>1920 && current_frame<=2050)
+                    {
+                        int t1=1920;
+                        int t2=2050;
+                        int llx1=0;
+                        int lly1=320;
+                        int llx2=280;
+                        int lly2=343;
+                        int urx1=450;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>2050 && current_frame<=2340)
+                    {
+                        int t1=2050;
+                        int t2=2340;
+                        int llx1=318;
+                        int lly1=343;
+                        int llx2=818;
+                        int lly2=343;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                //second round###
+                else if(current_frame>3160 && current_frame<=3390)
+                    {
+                        int t1=3160;
+                        int t2=3390;
+                        int llx1=818;
+                        int lly1=343;
+                        int llx2=318;
+                        int lly2=343;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>3390 && current_frame<=3510)
+                    {
+                        int t1=3390;
+                        int t2=3510;
+                        int llx1=318;
+                        int lly1=343;
+                        int llx2=70;
+                        int lly2=343;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=592;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>3510 && current_frame<=3552)
+                    {
+                        int t1=3510;
+                        int t2=3552;
+                        int llx1=70;
+                        int lly1=343;
+                        int llx2=70;
+                        int lly2=343;
+                        int urx1=590;
+                        int ury1=0;
+                        int urx2=592;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>3552 && current_frame<=3805)
+                    {
+                        int t1=3552;
+                        int t2=3805;
+                        int llx1=70;
+                        int lly1=343;
+                        int llx2=318;
+                        int lly2=343;
+                        int urx1=590;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>3805 && current_frame<=4240)
+                    {
+                        int t1=3805;
+                        int t2=4240;
+                        int llx1=318;
+                        int lly1=343;
+                        int llx2=818;
+                        int lly2=343;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>4680 && current_frame<=4935)
+                    {
+                        int t1=4680;
+                        int t2=4935;
+                        int llx1=818;
+                        int lly1=343;
+                        int llx2=318;
+                        int lly2=380;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>4935 && current_frame<=5040)
+                    {
+                        int t1=4935;
+                        int t2=5040;
+                        int llx1=318;
+                        int lly1=343;
+                        int llx2=0;
+                        int lly2=343;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=500;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>5040 && current_frame<=5280)
+                    {
+                        int t1=5040;
+                        int t2=5255;
+                        int llx1=0;
+                        int lly1=343;
+                        int llx2=0;
+                        int lly2=343;
+                        int urx1=500;
+                        int ury1=0;
+                        int urx2=0;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                //third round###
+                else if(current_frame>5580 && current_frame<=6025)
+                    {
+                        int t1=5580;
+                        int t2=6025;
+                        int llx1=0;
+                        int lly1=343;
+                        int llx2=0;
+                        int lly2=343;
+                        int urx1=0;
+                        int ury1=0;
+                        int urx2=500;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>6025 && current_frame<=6250)
+                    {
+                        int t1=6025;
+                        int t2=6250;
+                        int llx1=0;
+                        int lly1=343;
+                        int llx2=318;
+                        int lly2=343;
+                        int urx1=500;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>6250 && current_frame<=6430)
+                    {
+                        int t1=6250;
+                        int t2=6430;
+                        int llx1=318;
+                        int lly1=343;
+                        int llx2=560;
+                        int lly2=330;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>6430 && current_frame<=6710)
+                    {
+                        int t1=6430;
+                        int t2=6710;
+                        int llx1=560;
+                        int lly1=330;
+                        int llx2=318;
+                        int lly2=360;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>6710 && current_frame<=6810)
+                    {
+                        int t1=6710;
+                        int t2=6810;
+                        int llx1=318;
+                        int lly1=360;
+                        int llx2=150;
+                        int lly2=350;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=650;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>6810 && current_frame<=6985)
+                    {
+                        int t1=6810;
+                        int t2=6985;
+                        int llx1=150;
+                        int lly1=350;
+                        int llx2=50;
+                        int lly2=250;
+                        int urx1=650;
+                        int ury1=0;
+                        int urx2=400;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>6985 && current_frame<=7245)
+                    {
+                        int t1=6985;
+                        int t2=7245;
+                        int llx1=50;
+                        int lly1=250;
+                        int llx2=45;
+                        int lly2=190;
+                        int urx1=400;
+                        int ury1=0;
+                        int urx2=270;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>7245 && current_frame<=7525)
+                    {
+                        int t1=7245;
+                        int t2=7525;
+                        int llx1=45;
+                        int lly1=190;
+                        int llx2=60;
+                        int lly2=250;
+                        int urx1=270;
+                        int ury1=0;
+                        int urx2=490;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>7525 && current_frame<=7785)
+                    {
+                        int t1=7525;
+                        int t2=7785;
+                        int llx1=60;
+                        int lly1=250;
+                        int llx2=420;
+                        int lly2=270;
+                        int urx1=490;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }  
+                else if(current_frame>7785 && current_frame<=8380)
+                    {
+                        int t1=7785;
+                        int t2=8380;
+                        int llx1=420;
+                        int lly1=270;
+                        int llx2=790;
+                        int lly2=250;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    } 
+                else if(current_frame>8380 and current_frame<=8710)
+                    {
+                        int t1=8380;
+                        int t2=8710;
+                        int llx1=790;
+                        int lly1=250;
+                        int llx2=460;
+                        int lly2=250;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=818;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    } 
+                else if(current_frame>8710 && current_frame<=8980)
+                    {
+                        int t1=8710;
+                        int t2=8980;
+                        int llx1=460;
+                        int lly1=250;
+                        int llx2=0;
+                        int lly2=250;
+                        int urx1=818;
+                        int ury1=0;
+                        int urx2=350;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }
+                else if(current_frame>8980 && current_frame<=9200)
+                    {
+                        int t1=8980;
+                        int t2=9200;
+                        int llx1=0;
+                        int lly1=250;
+                        int llx2=0;
+                        int lly2=250;
+                        int urx1=350;
+                        int ury1=0;
+                        int urx2=0;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }
+                //fourth round###
+                else if(current_frame>9500 && current_frame<=9800)
+                    {
+                        int t1=9500;
+                        int t2=9800;
+                        int llx1=0;
+                        int lly1=250;
+                        int llx2=0;
+                        int lly2=250;
+                        int urx1=0;
+                        int ury1=0;
+                        int urx2=400;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }
+                else if(current_frame>9800 && current_frame<=10000)
+                    {
+                        int t1=9800;
+                        int t2=10000;
+                        int llx1=0;
+                        int lly1=250;
+                        int llx2=300;
+                        int lly2=250;
+                        int urx1=400;
+                        int ury1=0;
+                        int urx2=650;
+                        int ury2=0;
+                        temp[0]=(float)(llx2-llx1)*(current_frame-t1)/(t2-t1)+llx1;
+                        temp[1]=(float)(lly2-lly1)*(current_frame-t1)/(t2-t1)+lly1;
+                        temp[2]=(float)(urx2-urx1)*(current_frame-t1)/(t2-t1)+urx1;
+                        temp[3]=(float)(ury2-ury1)*(current_frame-t1)/(t2-t1)+ury1;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect;
+                    }
+                else
+                    {
+                        temp[0]=(float)0;
+                        temp[1]=(float)0;
+                        temp[2]=(float)0;
+                        temp[3]=(float)0;
+                        for(int i=0;i<4;i++){
+                            maskRect.push_back(temp[i]);
+                        }
+                        return maskRect; 
+                    }
+                    
+    }
 }
 
 } //namespace ORB_SLAM

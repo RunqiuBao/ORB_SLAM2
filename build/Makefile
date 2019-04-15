@@ -673,32 +673,32 @@ src/MapPoint.cc.s:
 	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/MapPoint.cc.s
 .PHONY : src/MapPoint.cc.s
 
-src/ORBextractor.o: src/ORBextractor.cc.o
+src/ORBextractor_mask.o: src/ORBextractor_mask.cc.o
 
-.PHONY : src/ORBextractor.o
+.PHONY : src/ORBextractor_mask.o
 
 # target to build an object file
-src/ORBextractor.cc.o:
-	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o
-.PHONY : src/ORBextractor.cc.o
+src/ORBextractor_mask.cc.o:
+	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o
+.PHONY : src/ORBextractor_mask.cc.o
 
-src/ORBextractor.i: src/ORBextractor.cc.i
+src/ORBextractor_mask.i: src/ORBextractor_mask.cc.i
 
-.PHONY : src/ORBextractor.i
+.PHONY : src/ORBextractor_mask.i
 
 # target to preprocess a source file
-src/ORBextractor.cc.i:
-	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.i
-.PHONY : src/ORBextractor.cc.i
+src/ORBextractor_mask.cc.i:
+	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.i
+.PHONY : src/ORBextractor_mask.cc.i
 
-src/ORBextractor.s: src/ORBextractor.cc.s
+src/ORBextractor_mask.s: src/ORBextractor_mask.cc.s
 
-.PHONY : src/ORBextractor.s
+.PHONY : src/ORBextractor_mask.s
 
 # target to generate assembly for a file
-src/ORBextractor.cc.s:
-	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.s
-.PHONY : src/ORBextractor.cc.s
+src/ORBextractor_mask.cc.s:
+	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.s
+.PHONY : src/ORBextractor_mask.cc.s
 
 src/ORBmatcher.o: src/ORBmatcher.cc.o
 
@@ -983,9 +983,9 @@ help:
 	@echo "... src/MapPoint.o"
 	@echo "... src/MapPoint.i"
 	@echo "... src/MapPoint.s"
-	@echo "... src/ORBextractor.o"
-	@echo "... src/ORBextractor.i"
-	@echo "... src/ORBextractor.s"
+	@echo "... src/ORBextractor_mask.o"
+	@echo "... src/ORBextractor_mask.i"
+	@echo "... src/ORBextractor_mask.s"
 	@echo "... src/ORBmatcher.o"
 	@echo "... src/ORBmatcher.i"
 	@echo "... src/ORBmatcher.s"

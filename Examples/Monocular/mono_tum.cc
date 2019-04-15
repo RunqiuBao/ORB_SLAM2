@@ -41,7 +41,7 @@ void LoadImages(const string &strFile, vector<string> &vstrImageFilenames,
 int main(int argc, char **argv)
 {
     //runqiu: add all the path for debug
-    char *paths[4]={"none","Vocabulary/ORBvoc.bin","Examples/Monocular/gopro3_1.11.5v_1080.yaml","Examples/Monocular/sequence5"};
+    char *paths[4]={"none","Vocabulary/ORBvoc.bin","Examples/Monocular/gopro3_1.11.5v_1080.yaml","../slamDataset/mono/sequence5"};
     argv = paths;
 
     //runqiu:for debug

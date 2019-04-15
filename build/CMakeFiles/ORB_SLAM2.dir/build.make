@@ -153,28 +153,28 @@ CMakeFiles/ORB_SLAM2.dir/src/LoopClosing.cc.o.provides: CMakeFiles/ORB_SLAM2.dir
 CMakeFiles/ORB_SLAM2.dir/src/LoopClosing.cc.o.provides.build: CMakeFiles/ORB_SLAM2.dir/src/LoopClosing.cc.o
 
 
-CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o: CMakeFiles/ORB_SLAM2.dir/flags.make
-CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o: ../src/ORBextractor.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/chino/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor.cc
+CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o: CMakeFiles/ORB_SLAM2.dir/flags.make
+CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o: ../src/ORBextractor_mask.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/chino/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor_mask.cc
 
-CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor.cc > CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.i
+CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor_mask.cc > CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.i
 
-CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor.cc -o CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.s
+CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor_mask.cc -o CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.s
 
-CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o.requires:
+CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o.requires:
 
-.PHONY : CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o.requires
+.PHONY : CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o.requires
 
-CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o.provides: CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o.requires
-	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o.provides.build
-.PHONY : CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o.provides
+CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o.provides: CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o.requires
+	$(MAKE) -f CMakeFiles/ORB_SLAM2.dir/build.make CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o.provides.build
+.PHONY : CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o.provides
 
-CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o.provides.build: CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o
+CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o.provides.build: CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o
 
 
 CMakeFiles/ORB_SLAM2.dir/src/ORBmatcher.cc.o: CMakeFiles/ORB_SLAM2.dir/flags.make
@@ -519,7 +519,7 @@ ORB_SLAM2_OBJECTS = \
 "CMakeFiles/ORB_SLAM2.dir/src/Tracking.cc.o" \
 "CMakeFiles/ORB_SLAM2.dir/src/LocalMapping.cc.o" \
 "CMakeFiles/ORB_SLAM2.dir/src/LoopClosing.cc.o" \
-"CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o" \
+"CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o" \
 "CMakeFiles/ORB_SLAM2.dir/src/ORBmatcher.cc.o" \
 "CMakeFiles/ORB_SLAM2.dir/src/FrameDrawer.cc.o" \
 "CMakeFiles/ORB_SLAM2.dir/src/Converter.cc.o" \
@@ -542,7 +542,7 @@ ORB_SLAM2_EXTERNAL_OBJECTS =
 ../lib/libORB_SLAM2.so: CMakeFiles/ORB_SLAM2.dir/src/Tracking.cc.o
 ../lib/libORB_SLAM2.so: CMakeFiles/ORB_SLAM2.dir/src/LocalMapping.cc.o
 ../lib/libORB_SLAM2.so: CMakeFiles/ORB_SLAM2.dir/src/LoopClosing.cc.o
-../lib/libORB_SLAM2.so: CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o
+../lib/libORB_SLAM2.so: CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o
 ../lib/libORB_SLAM2.so: CMakeFiles/ORB_SLAM2.dir/src/ORBmatcher.cc.o
 ../lib/libORB_SLAM2.so: CMakeFiles/ORB_SLAM2.dir/src/FrameDrawer.cc.o
 ../lib/libORB_SLAM2.so: CMakeFiles/ORB_SLAM2.dir/src/Converter.cc.o
@@ -629,7 +629,7 @@ CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/System.cc.o.requ
 CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/Tracking.cc.o.requires
 CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/LocalMapping.cc.o.requires
 CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/LoopClosing.cc.o.requires
-CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/ORBextractor.cc.o.requires
+CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/ORBextractor_mask.cc.o.requires
 CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/ORBmatcher.cc.o.requires
 CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/FrameDrawer.cc.o.requires
 CMakeFiles/ORB_SLAM2.dir/requires: CMakeFiles/ORB_SLAM2.dir/src/Converter.cc.o.requires

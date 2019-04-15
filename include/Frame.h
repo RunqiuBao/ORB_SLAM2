@@ -28,7 +28,7 @@
 #include "Thirdparty/DBoW2/DBoW2/FeatureVector.h"
 #include "ORBVocabulary.h"
 #include "KeyFrame.h"
-#include "ORBextractor.h"
+#include "ORBextractor_mask.h"
 
 #include <opencv2/opencv.hpp>
 
@@ -45,20 +45,24 @@ class Frame
 public:
     Frame();
 
+    //runqiu:mask DO
+    //void killPointsOnDO(int nFrame, std::string cameraNumber);
+
     // Copy constructor.
     Frame(const Frame &frame);
 
     // Constructor for stereo cameras.
-    Frame(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractor* extractorLeft, ORBextractor* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
+    Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractormask* extractorLeft, ORBextractormask* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
 
     // Constructor for RGB-D cameras.
-    Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeStamp, ORBextractor* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
+    Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeStamp, ORBextractormask* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
 
     // Constructor for Monocular cameras.
-    Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
+    Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractormask* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
 
     // Extract ORB on the image. 0 for left image and 1 for right image.
-    void ExtractORB(int flag, const cv::Mat &im);
+    //void ExtractORB(int flag, const cv::Mat &im);
+    void ExtractORB_mask(int flag, const cv::Mat &im, int nFrame);//runqiu:add mask to 
 
     // Compute Bag of Words representation.
     void ComputeBoW();
@@ -99,11 +103,12 @@ public:
     cv::Mat UnprojectStereo(const int &i);
 
 public:
-    // Vocabulary used for relocalization.
+    // Vocabulary used for relocalization
     ORBVocabulary* mpORBvocabulary;
 
     // Feature extractor. The right is used only in the stereo case.
-    ORBextractor* mpORBextractorLeft, *mpORBextractorRight;
+    ORBextractormask* mpORBextractorRight;
+    ORBextractormask* mpORBextractorLeft;//runqiu:add mask to left images
 
     // Frame timestamp.
     double mTimeStamp;
@@ -134,7 +139,7 @@ public:
     // Vector of keypoints (original for visualization) and undistorted (actually used by the system).
     // In the stereo case, mvKeysUn is redundant as images must be rectified.
     // In the RGB-D case, RGB images can be distorted.
-    std::vector<cv::KeyPoint> mvKeys, mvKeysRight;
+    std::vector<cv::KeyPoint> mvKeys, mvKeysRight;//runqiu:mvkeys is the feature points in left image, mvkeysRight is feature points in right image
     std::vector<cv::KeyPoint> mvKeysUn;
 
     // Corresponding stereo coordinate and depth for each keypoint.
@@ -190,6 +195,9 @@ public:
 
 private:
 
+    //runqiu:mask function
+    //std::vector<float> maskFunction(int frameNumber,std::string cameraNumber);
+    
     // Undistort keypoints given OpenCV distortion parameters.
     // Only for the RGB-D case. Stereo must be already rectified!
     // (called in the constructor).

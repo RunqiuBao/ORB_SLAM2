@@ -599,8 +599,8 @@ ORBVocabulary.h
 ../include/ORBVocabulary.h
 KeyFrame.h
 ../include/KeyFrame.h
-ORBextractor.h
-../include/ORBextractor.h
+ORBextractor_mask.h
+../include/ORBextractor_mask.h
 opencv2/opencv.hpp
 -
 
@@ -633,8 +633,8 @@ Thirdparty/DBoW2/DBoW2/FeatureVector.h
 ../include/Thirdparty/DBoW2/DBoW2/FeatureVector.h
 ORBVocabulary.h
 ../include/ORBVocabulary.h
-ORBextractor.h
-../include/ORBextractor.h
+ORBextractor_mask.h
+../include/ORBextractor_mask.h
 Frame.h
 ../include/Frame.h
 KeyFrameDatabase.h
@@ -732,7 +732,7 @@ Thirdparty/DBoW2/DBoW2/FORB.h
 Thirdparty/DBoW2/DBoW2/TemplatedVocabulary.h
 ../include/Thirdparty/DBoW2/DBoW2/TemplatedVocabulary.h
 
-../include/ORBextractor.h
+../include/ORBextractor_mask.h
 vector
 -
 list
@@ -831,8 +831,8 @@ ORBVocabulary.h
 ../include/ORBVocabulary.h
 KeyFrameDatabase.h
 ../include/KeyFrameDatabase.h
-ORBextractor.h
-../include/ORBextractor.h
+ORBextractor_mask.h
+../include/ORBextractor_mask.h
 Initializer.h
 ../include/Initializer.h
 MapDrawer.h
@@ -978,7 +978,7 @@ ORBmatcher.h
 mutex
 -
 
-/media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor.cc
+/media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor_mask.cc
 opencv2/core/core.hpp
 -
 opencv2/highgui/highgui.hpp
@@ -989,8 +989,8 @@ opencv2/imgproc/imgproc.hpp
 -
 vector
 -
-ORBextractor.h
-/media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor.h
+ORBextractor_mask.h
+/media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor_mask.h
 
 /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBmatcher.cc
 ORBmatcher.h
