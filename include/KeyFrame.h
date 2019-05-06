@@ -45,6 +45,9 @@ class KeyFrame
 public:
     KeyFrame(Frame &F, Map* pMap, KeyFrameDatabase* pKFDB);
 
+    //runqiu: give keyframe timestamp
+    void SetTimestamp(Frame &F);
+
     // Pose functions
     void SetPose(const cv::Mat &Tcw);
     cv::Mat GetPose();

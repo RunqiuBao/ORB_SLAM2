@@ -989,6 +989,8 @@ opencv2/imgproc/imgproc.hpp
 -
 vector
 -
+algorithm
+-
 ORBextractor_mask.h
 /media/chino/HD-PSFU3/testbar/ORB_SLAM2/src/ORBextractor_mask.h
 

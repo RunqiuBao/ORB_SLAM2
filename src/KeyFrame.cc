@@ -53,8 +53,14 @@ KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
             mGrid[i][j] = F.mGrid[i][j];
     }
 
-    SetPose(F.mTcw);    
+    SetPose(F.mTcw);
+    //SetTimestamp(F);//runqiu: give keyframe timestamp
 }
+
+void KeyFrame::SetTimestamp(Frame &F){
+    //this->mTimeStamp=F.mTimeStamp;
+}
+
 
 void KeyFrame::ComputeBoW()
 {

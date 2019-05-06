@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     vector<string> vstrImageRight;
     vector<double> vTimestamps;
     vector<string> vImgNames;
-    char *argvtemp[4]={" ","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro34.yaml","/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-stereo-do"};
+    char *argvtemp[4]={" ","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro12.yaml","/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-front"};
  
     LoadImages(string(argvtemp[3]), vstrImageLeft, vstrImageRight, vTimestamps, vImgNames);
 
@@ -162,13 +162,18 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageLeft,
             ss >> t2;
             double t;
             ss >> t;
-            vTimestamps.push_back(t);
+            //vTimestamps.push_back(t);
+            vTimestamps.push_back(std::stod(s));//runqiu: here I modified the original stupid string to double method
             vImgNames.push_back(t2);
         }
     }
 
-    string strPrefixLeft = strPathToSequence + "/left/undisR-1k/";
-    string strPrefixRight = strPathToSequence + "/right/undisR-1k/";
+    //string strPrefixLeft = strPathToSequence + "/left/undisR-1k/";
+    //string strPrefixRight = strPathToSequence + "/right/undisR-1k/";
+    //string strPrefixLeft = strPathToSequence + "/left/datat2_1080r/";
+    //string strPrefixRight = strPathToSequence + "/right/datat2_1080r/";
+    string strPrefixLeft = strPathToSequence + "/left/";
+    string strPrefixRight = strPathToSequence + "/right/";
 
     const int nTimes = vTimestamps.size();
     vstrImageLeft.resize(nTimes);
@@ -180,7 +185,7 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageLeft,
         ss << setfill('0') << setw(6) << i;
         //vstrImageLeft[i] = strPrefixLeft + ss.str() + ".png";
         //vstrImageRight[i] = strPrefixRight + ss.str() + ".png";
-	vstrImageLeft[i] = strPrefixLeft + vImgNames[i] + ".png";
+	    vstrImageLeft[i] = strPrefixLeft + vImgNames[i] + ".png";
         vstrImageRight[i] = strPrefixRight + vImgNames[i] + ".png";
     }
 }

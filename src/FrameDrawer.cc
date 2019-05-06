@@ -103,15 +103,15 @@ cv::Mat FrameDrawer::DrawFrame()
                 pt2.y=vCurrentKeys[i].pt.y+r;
 
                 // This is a match to a MapPoint in the map
-                if(vbMap[i])
+                if(vbMap[i])//runqiu: keypoints visualization
                 {
-                    cv::rectangle(im,pt1,pt2,cv::Scalar(0,255,0));
+                    cv::rectangle(im,pt1,pt2,cv::Scalar(0,255,0));//runqiu: green
                     cv::circle(im,vCurrentKeys[i].pt,2,cv::Scalar(0,255,0),-1);
                     mnTracked++;
                 }
                 else // This is match to a "visual odometry" MapPoint created in the last frame
                 {
-                    cv::rectangle(im,pt1,pt2,cv::Scalar(255,0,0));
+                    cv::rectangle(im,pt1,pt2,cv::Scalar(255,0,0));//runqiu:blue
                     cv::circle(im,vCurrentKeys[i].pt,2,cv::Scalar(255,0,0),-1);
                     mnTrackedVO++;
                 }

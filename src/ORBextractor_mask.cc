@@ -59,6 +59,7 @@
 #include <opencv2/features2d/features2d.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <vector>
+#include<algorithm>
 
 #include "ORBextractor_mask.h"
 
@@ -778,7 +779,7 @@ void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKey
         vector<cv::KeyPoint> vToDistributeKeys;
         vToDistributeKeys.reserve(nfeatures*10);
 
-        const float width = (maxBorderX-minBorderX);
+        const float width = (maxBorderX-minBorderX);//runqiu: area inside boundary
         const float height = (maxBorderY-minBorderY);
 
         const int nCols = width/W;
@@ -822,12 +823,22 @@ void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKey
                         (*vit).pt.x+=j*wCell;
                         (*vit).pt.y+=i*hCell;
                         std::vector<float> maskRect;
-                        maskRect = maskFunction(nFrame,0);
+                        //maskRect = maskFunction(nFrame,0);
+                        maskRect = maskFunction(0,0);
                         float llx=maskRect[0];
                         float lly=maskRect[1];
                         float urx=maskRect[2];
                         float ury=maskRect[3];
-                        float imgSizeX=(float)818;
+                        int margin=0;
+                        llx-=margin;
+                        llx=std::max(llx,(float)0);
+                        lly+=margin*0.7;
+                        lly=std::min(lly,(float)478);
+                        urx+=margin;
+                        urx=std::min(urx,(float)818);
+                        ury-=margin*0.7;
+                        ury=std::max(ury,(float)0);
+                        float imgSizeX=(float)818;//runqiu: caution the image size!!
                         float imgSizeY=(float)478;
                         float currentLevelX=mvImagePyramid[level].cols;
                         float currentLevelY=mvImagePyramid[level].rows;

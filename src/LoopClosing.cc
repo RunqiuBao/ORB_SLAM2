@@ -225,8 +225,8 @@ bool LoopClosing::DetectLoop()
     }
     else
     {
-        //return true;//runqiu: disable loop closure
-        return false;
+        return true;//runqiu: disable loop closure
+        //return false;
     }
 
     mpCurrentKF->SetErase();

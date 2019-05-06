@@ -62,6 +62,7 @@ Frame::Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const do
     :mpORBvocabulary(voc),mpORBextractorLeft(extractorLeft),mpORBextractorRight(extractorRight), mTimeStamp(timeStamp), mK(K.clone()),mDistCoef(distCoef.clone()), mbf(bf), mThDepth(thDepth),
      mpReferenceKF(static_cast<KeyFrame*>(NULL))
 {
+    //this->mTimeStamp=timeStamp;//runqiu: manually set frame timestamp
     // Frame ID
     mnId=nNextId++;
 
@@ -117,7 +118,7 @@ Frame::Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const do
 }
 
 Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeStamp, ORBextractormask* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth)
-    :mpORBvocabulary(voc),mpORBextractorLeft(extractor),mpORBextractorRight(static_cast<ORBextractormask*>(NULL)),
+    :mpORBvocabulary(voc),mpORBextractorLeft(extractor),mpORBextractorRight(static_cast<ORBextractormask*>(NULL)),  //runqiu: initializer lists, to initialize member values
      mTimeStamp(timeStamp), mK(K.clone()),mDistCoef(distCoef.clone()), mbf(bf), mThDepth(thDepth)
 {
     // Frame ID

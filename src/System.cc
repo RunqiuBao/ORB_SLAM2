@@ -440,8 +440,8 @@ void System::SaveKeyFrameTrajectoryAndMap(ORB_SLAM2::Map *map, const string &fil
         }
     }
 
-    f.close();
-    fpoints.close();
+    f.close();//runqiu: trajectory
+    fpoints.close();//runqiu: mappoints
     std::cout << std::endl << "trajectory saved!" << std::endl;
 }
 

@@ -695,7 +695,8 @@ void LocalMapping::KeyFrameCulling()
         }  
 
         if(nRedundantObservations>0.9*nMPs)
-            pKF->SetBadFlag();
+            //int a = 1;
+            pKF->SetBadFlag();//runqiu: increase keyframe numbers test
     }
 }
 
