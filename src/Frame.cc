@@ -191,7 +191,7 @@ Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractormask* e
     // ORB extraction
     ExtractORB_mask(0,imGray,0);
 
-    N = mvKeys.size();
+    N = mvKeys.size();//mvkeys is the final output of ORBextractor
 
     if(mvKeys.empty())
         return;

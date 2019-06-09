@@ -1073,7 +1073,7 @@ void Tracking::CreateNewKeyFrame()
     if(!mpLocalMapper->SetNotStop(true))
         return;
 
-    KeyFrame* pKF = new KeyFrame(mCurrentFrame,mpMap,mpKeyFrameDB);
+    KeyFrame* pKF = new KeyFrame(mCurrentFrame,mpMap,mpKeyFrameDB);//runqiu: insert new keyframe
 
     mpReferenceKF = pKF;
     mCurrentFrame.mpReferenceKF = pKF;

@@ -425,7 +425,7 @@ void System::SaveKeyFrameTrajectoryAndMap(ORB_SLAM2::Map *map, const string &fil
         vector<float> q = ORB_SLAM2::Converter::toQuaternion(R);
         cv::Mat t = pKF->GetCameraCenter();
         f << setprecision(6) << pKF->mTimeStamp << setprecision(7) << " " << t.at<float>(0) << " " << t.at<float>(1) << " " << t.at<float>(2)
-          << " " << q[0] << " " << q[1] << " " << q[2] << " " << q[3] << std::endl;
+          << " " << q[0] << " " << q[1] << " " << q[2] << " " << q[3]<< " " <<std::to_string(pKF->N)<< std::endl;//runqiu: save trajectory
 
         for (auto point : pKF->GetMapPoints()) {
             auto coords = point->GetWorldPos();
@@ -436,7 +436,7 @@ void System::SaveKeyFrameTrajectoryAndMap(ORB_SLAM2::Map *map, const string &fil
                     << " " << coords.at<float>(0, 0)
                     << " " << coords.at<float>(1, 0)
                     << " " << coords.at<float>(2, 0)
-                    << std::endl;
+                    << std::endl;//runqiu: save mappoints
         }
     }
 
@@ -444,7 +444,6 @@ void System::SaveKeyFrameTrajectoryAndMap(ORB_SLAM2::Map *map, const string &fil
     fpoints.close();//runqiu: mappoints
     std::cout << std::endl << "trajectory saved!" << std::endl;
 }
-
 
 void System::SaveKeyFrameTrajectoryTUM(const string &filename)
 {
@@ -525,13 +524,16 @@ void System::SaveTrajectoryKITTI(const string &filename)
 
         Trw = Trw*pKF->GetPose()*Two;
 
-        cv::Mat Tcw = (*lit)*Trw;
+        cv::Mat Tcw = (*lit)*Trw;//runqiu: relative framepose times reference framepose equals arbitrary framepose
         cv::Mat Rwc = Tcw.rowRange(0,3).colRange(0,3).t();
-        cv::Mat twc = -Rwc*Tcw.rowRange(0,3).col(3);
+        cv::Mat twc = -Rwc*Tcw.rowRange(0,3).col(3);//runqiu: inverse of homogeneous tf
+        vector<float> qwc = Converter::toQuaternion(Rwc);
+        f << setprecision(6) << *lT << setprecision(9) << " " << twc.at<float>(0) << " " << twc.at<float>(1) << " " << twc.at<float>(2)
+          << " " << qwc[0] << " " << qwc[1] << " " << qwc[2] << " " << qwc[3] << endl;
 
-        f << setprecision(9) << Rwc.at<float>(0,0) << " " << Rwc.at<float>(0,1)  << " " << Rwc.at<float>(0,2) << " "  << twc.at<float>(0) << " " <<
-             Rwc.at<float>(1,0) << " " << Rwc.at<float>(1,1)  << " " << Rwc.at<float>(1,2) << " "  << twc.at<float>(1) << " " <<
-             Rwc.at<float>(2,0) << " " << Rwc.at<float>(2,1)  << " " << Rwc.at<float>(2,2) << " "  << twc.at<float>(2) << endl;
+        //f << setprecision(9) << Rwc.at<float>(0,0) << " " << Rwc.at<float>(0,1)  << " " << Rwc.at<float>(0,2) << " "  << twc.at<float>(0) << " " <<
+        //     Rwc.at<float>(1,0) << " " << Rwc.at<float>(1,1)  << " " << Rwc.at<float>(1,2) << " "  << twc.at<float>(1) << " " <<
+        //     Rwc.at<float>(2,0) << " " << Rwc.at<float>(2,1)  << " " << Rwc.at<float>(2,2) << " "  << twc.at<float>(2) << endl;
     }
     f.close();
     cout << endl << "trajectory saved!" << endl;

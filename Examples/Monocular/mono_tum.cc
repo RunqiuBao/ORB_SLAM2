@@ -41,7 +41,7 @@ void LoadImages(const string &strFile, vector<string> &vstrImageFilenames,
 int main(int argc, char **argv)
 {
     //runqiu: add all the path for debug
-    char *paths[4]={"none","Vocabulary/ORBvoc.bin","Examples/Monocular/gopro3_1.11.5v_1080.yaml","../slamDataset/mono/sequence5"};
+    char *paths[4]={"none","Vocabulary/ORBvoc.bin","Examples/Monocular/gopro3_1.11.5v_1080.yaml","../slamDataset/mono/sequence4"};
     argv = paths;
 
     //runqiu:for debug
@@ -136,6 +136,7 @@ int main(int argc, char **argv)
     // Save camera trajectory
     //SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");
     SLAM.SaveKeyFrameTrajectoryAndMap(SLAM.GetMap(), "KeyFrameTrajectory.txt", "MapPoints.txt");//runqiu:to save the point cloud map with trajectory
+    SLAM.SaveTrajectoryTUM("CameraTrajectory.txt");
     return 0;
 }
 

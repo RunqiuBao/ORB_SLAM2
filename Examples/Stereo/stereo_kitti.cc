@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     vector<string> vstrImageRight;
     vector<double> vTimestamps;
     vector<string> vImgNames;
-    char *argvtemp[4]={" ","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro12.yaml","/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-front"};
+    char *argvtemp[4]={" ","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro12.yaml","/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-front-complete"};
  
     LoadImages(string(argvtemp[3]), vstrImageLeft, vstrImageRight, vTimestamps, vImgNames);
 
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 
     // Main loop
     cv::Mat imLeft, imRight;
-    // cv::Mat imTf;//runqiu:get the transform of current frame
+    //cv::Mat imTf;//runqiu:get the pose of current frame
     // vector<std::string> tfRecordLine;
     for(int ni=0; ni<nImages; ni++)
     {
@@ -96,10 +96,10 @@ int main(int argc, char **argv)
 
         // Pass the images to the SLAM system
         SLAM.TrackStereo(imLeft,imRight,tframe,ni);//runqiu:for using hard-coded maskFunction,change timestamp to frame number
-        // cv::Mat Rwc = imTf.rowRange(0,3).colRange(0,3).t();//rotation information
-        // cv::Mat twc = -Rwc*imTf.rowRange(0,3).col(3);//translation information
-        // vector<float> q = ORB_SLAM2::Converter::toQuaternion(Rwc);
-        // vector<float> t = twc.cols;
+        //cv::Mat Rwc = imTf.rowRange(0,3).colRange(0,3).t();//rotation information
+        //cv::Mat twc = -Rwc*imTf.rowRange(0,3).col(3);//translation information
+        //vector<float> q = ORB_SLAM2::Converter::toQuaternion(Rwc);
+        //vector<float> t = twc.cols;
 
 #ifdef COMPILEDWITHC11
         std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
@@ -139,16 +139,17 @@ int main(int argc, char **argv)
     // Save camera trajectory
     //SLAM.SaveTrajectoryKITTI("CameraTrajectory.txt");
     SLAM.SaveKeyFrameTrajectoryAndMap(SLAM.GetMap(), "KeyFrameTrajectory.txt", "MapPoints.txt");//runqiu:to save the point cloud map with trajectory
+    SLAM.SaveTrajectoryKITTI("CameraTrajectory.txt");
 
     return 0;
 }
 
-void LoadImages(const string &strPathToSequence, vector<string> &vstrImageLeft,
-                vector<string> &vstrImageRight, vector<double> &vTimestamps, vector<string> &vImgNames)
+void LoadImages(const string &strPathToSevector<string> &vstrImageRight,> &vstrImageLeft,
+                vector<string> &vstrImagevector<string> &vstrImageRight, &vTimestamps, vector<string> &vImgNames)
 {
     ifstream fTimes;
-    string strPathTimeFile = strPathToSequence + "/mymav.txt";
-    fTimes.open(strPathTimeFile.c_str());
+    string strPathTimeFile = strPathToSeqvector<string> &vstrImageRight,
+    fTimes.open(strPathTimeFile.c_str());vector<string> &vstrImageRight,
     while(!fTimes.eof())
     {
         string s;
