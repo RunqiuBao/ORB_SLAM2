@@ -169,10 +169,11 @@ void Tracking::SetViewer(Viewer *pViewer)
 }
 
 
-cv::Mat Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRectRight, const double &timestamp, const int &nFrame)
+cv::Mat Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRectRight, const double &timestamp, const int &nFrame, const cv::Mat &imRectMask)
 {
     mImGray = imRectLeft;
     cv::Mat imGrayRight = imRectRight;
+    cv::Mat imBinMask = imRectMask;
 
     if(mImGray.channels()==3)
     {
@@ -201,7 +202,7 @@ cv::Mat Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRe
         }
     }
 
-    mCurrentFrame = Frame(nFrame,mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth);
+    mCurrentFrame = Frame(nFrame,mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth,imBinMask);
 
     //runqiu:add mask here and kill all features on DO
     //mCurrentFrame.killPointsOnDO(nFrame, "left");

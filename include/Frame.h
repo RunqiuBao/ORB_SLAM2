@@ -52,7 +52,7 @@ public:
     Frame(const Frame &frame);
 
     // Constructor for stereo cameras.
-    Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractormask* extractorLeft, ORBextractormask* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
+    Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractormask* extractorLeft, ORBextractormask* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth, const cv::Mat &imMask);
 
     // Constructor for RGB-D cameras.
     Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeStamp, ORBextractormask* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);

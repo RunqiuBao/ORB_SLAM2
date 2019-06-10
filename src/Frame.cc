@@ -58,7 +58,7 @@ Frame::Frame(const Frame &frame)
 }
 
 
-Frame::Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractormask* extractorLeft, ORBextractormask* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth)
+Frame::Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractormask* extractorLeft, ORBextractormask* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth, const cv::Mat &imMask)
     :mpORBvocabulary(voc),mpORBextractorLeft(extractorLeft),mpORBextractorRight(extractorRight), mTimeStamp(timeStamp), mK(K.clone()),mDistCoef(distCoef.clone()), mbf(bf), mThDepth(thDepth),
      mpReferenceKF(static_cast<KeyFrame*>(NULL))
 {
@@ -76,8 +76,8 @@ Frame::Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const do
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
     // ORB extraction
-    thread threadLeft(&Frame::ExtractORB_mask,this,0,imLeft,nFrame);
-    thread threadRight(&Frame::ExtractORB_mask,this,1,imRight,nFrame);
+    thread threadLeft(&Frame::ExtractORB_mask,this,0,imLeft,nFrame,imMask);
+    thread threadRight(&Frame::ExtractORB_mask,this,1,imRight,nFrame,imMask);
     threadLeft.join();
     threadRight.join();
 
@@ -245,10 +245,10 @@ void Frame::AssignFeaturesToGrid()
     }
 }
 
-void Frame::ExtractORB_mask(int flag, const cv::Mat &im, int nFrame)//runqiu:nFrame is only for calculating the mask
+void Frame::ExtractORB_mask(int flag, const cv::Mat &im, int nFrame, const cv::Mat &imMask)//runqiu:nFrame is only for calculating the mask
 {
     if(flag==0)
-        (*mpORBextractorLeft)(im,cv::Mat(),mvKeys,mDescriptors,nFrame,flag);
+        (*mpORBextractorLeft)(im,imMask,mvKeys,mDescriptors,nFrame,flag);
     else
         (*mpORBextractorRight)(im,cv::Mat(),mvKeysRight,mDescriptorsRight,nFrame,flag);
 }

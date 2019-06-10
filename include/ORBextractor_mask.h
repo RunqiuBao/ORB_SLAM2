@@ -86,9 +86,10 @@ public:
 
 protected:
     std::vector<float> maskFunction(int frameNumber, int flag);//runqiu:mask for DO
+    int maskFunction_bin(float x, float y, cv::Mat maskimage);
 
     void ComputePyramid(cv::Mat image);
-    void ComputeKeyPointsOctTree(std::vector<std::vector<cv::KeyPoint> >& allKeypoints, int nFrame, int flag);    
+    void ComputeKeyPointsOctTree(std::vector<std::vector<cv::KeyPoint> >& allKeypoints, int nFrame, int flag, cv::Mat maskimage);    
     std::vector<cv::KeyPoint> DistributeOctTree(const std::vector<cv::KeyPoint>& vToDistributeKeys, const int &minX,
                                            const int &maxX, const int &minY, const int &maxY, const int &nFeatures, const int &level);
 

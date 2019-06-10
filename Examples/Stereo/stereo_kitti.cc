@@ -29,120 +29,8 @@
 
 #include<System.h>
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 using namespace std;
 
-//void recordTracking(cv::Mat imTf);
-void LoadImages(const string &strPathToSequence, vector<string> &vstrImageLeft,
-                vector<string> &vstrImageRight, vector<double> &vTimestamps, vector<string> &vImgNames);
-
-int main(int argc, char **argv)
-{
-    if(argc != 4)
-    {
-       // cerr << endl << "Usage: ./stereo_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
-      //  return 1;
-    }
-
-    // Retrieve paths to images
-    vector<string> vstrImageLeft;
-    vector<string> vstrImageRight;
-    vector<double> vTimestamps;
-    vector<string> vImgNames;
-    char *argvtemp[4]={" ","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro12.yaml","/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-front-complete"};
- 
-    LoadImages(string(argvtemp[3]), vstrImageLeft, vstrImageRight, vTimestamps, vImgNames);
-
-    const int nImages = vstrImageLeft.size();
-
-    // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    ORB_SLAM2::System SLAM(argvtemp[1],argvtemp[2],ORB_SLAM2::System::STEREO,true);
-
-    // Vector for tracking time statistics
-    vector<float> vTimesTrack;
-    vTimesTrack.resize(nImages);
-
-    cout << endl << "-------" << endl;
-    cout << "Start processing sequence ..." << endl;
-    cout << "Images in the sequence: " << nImages << endl << endl;   
-
-    // Main loop
-    cv::Mat imLeft, imRight;
-    //cv::Mat imTf;//runqiu:get the pose of current frame
-    // vector<std::string> tfRecordLine;
-    for(int ni=0; ni<nImages; ni++)
-    {
-        // Read left and right images from file
-        imLeft = cv::imread(vstrImageLeft[ni],CV_LOAD_IMAGE_UNCHANGED);
-        imRight = cv::imread(vstrImageRight[ni],CV_LOAD_IMAGE_UNCHANGED);
-        //cout << endl << std::to_string(ni)+" finish read!" << endl;
-        double tframe = vTimestamps[ni];
-
-        if(imLeft.empty())
-        {
-            cerr << endl << "Failed to load image at: "
-                 << string(vstrImageLeft[ni]) << endl;
-            return 1;
-        }
-
-#ifdef COMPILEDWITHC11
-        std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
-#else
-        std::chrono::monotonic_clock::time_point t1 = std::chrono::monotonic_clock::now();
-#endif
-
-        // Pass the images to the SLAM system
-        SLAM.TrackStereo(imLeft,imRight,tframe,ni);//runqiu:for using hard-coded maskFunction,change timestamp to frame number
-        //cv::Mat Rwc = imTf.rowRange(0,3).colRange(0,3).t();//rotation information
-        //cv::Mat twc = -Rwc*imTf.rowRange(0,3).col(3);//translation information
-        //vector<float> q = ORB_SLAM2::Converter::toQuaternion(Rwc);
-        //vector<float> t = twc.cols;
-
-#ifdef COMPILEDWITHC11
-        std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
-#else
-        std::chrono::monotonic_clock::time_point t2 = std::chrono::monotonic_clock::now();
-#endif
-
-        double ttrack= std::chrono::duration_cast<std::chrono::duration<double> >(t2 - t1).count();
-
-        vTimesTrack[ni]=ttrack;
-
-        // Wait to load the next frame
-        double T=0;
-        if(ni<nImages-1)
-            T = vTimestamps[ni+1]-tframe;
-        else if(ni>0)
-            T = tframe-vTimestamps[ni-1];
-
-        if(ttrack<T)
-            usleep((T-ttrack)*1e6);
-    }
-
-    // Stop all threads
-    SLAM.Shutdown();
-
-    // Tracking time statistics
-    sort(vTimesTrack.begin(),vTimesTrack.end());
-    float totaltime = 0;
-    for(int ni=0; ni<nImages; ni++)
-    {
-        totaltime+=vTimesTrack[ni];
-    }
-    cout << "-------" << endl << endl;
-    cout << "median tracking time: " << vTimesTrack[nImages/2] << endl;
-    cout << "mean tracking time: " << totaltime/nImages << endl;
-
-    // Save camera trajectory
-    //SLAM.SaveTrajectoryKITTI("CameraTrajectory.txt");
-    SLAM.SaveKeyFrameTrajectoryAndMap(SLAM.GetMap(), "KeyFrameTrajectory.txt", "MapPoints.txt");//runqiu:to save the point cloud map with trajectory
-    SLAM.SaveTrajectoryKITTI("CameraTrajectory.txt");
-
-    return 0;
-}
 
 void LoadImages(const string &strPathToSevector<string> &vstrImageRight,> &vstrImageLeft,
                 vector<string> &vstrImagevector<string> &vstrImageRight, &vTimestamps, vector<string> &vImgNames)
@@ -189,4 +77,130 @@ void LoadImages(const string &strPathToSevector<string> &vstrImageRight,> &vstrI
 	    vstrImageLeft[i] = strPrefixLeft + vImgNames[i] + ".png";
         vstrImageRight[i] = strPrefixRight + vImgNames[i] + ".png";
     }
+}
+
+void LoadMasks(const string &strPathToMask, vector<string> &vstrMaskLeft, vector<double> &vTimestamps)
+{
+    string strPrefixMaskLeft = strPathToSequence + "/leftmask/";
+
+    const int nTimes = vTimestamps.size();
+    vstrMaskLeft.resize(nTimes);
+
+    for(int i=0; i<nTimes; i++)
+    {
+        stringstream ss;
+        ss << setfill('0') << setw(6) << i;
+        vstrMaskLeft[i] = strPrefixMaskLeft + vTimestamps[i] + ".png";
+    }
+}
+
+int main(int argc, char **argv)
+{
+    if(argc != 4)
+    {
+       // cerr << endl << "Usage: ./stereo_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
+      //  return 1;
+    }
+
+    // Retrieve paths to images
+    vector<string> vstrImageLeft;
+    vector<string> vstrImageRight;
+    vector<double> vTimestamps;
+    vector<string> vImgNames;
+    char *argvtemp[4]={" ","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro12.yaml","/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-front-complete"};
+ 
+    LoadImages(string(argvtemp[3]), vstrImageLeft, vstrImageRight, vTimestamps, vImgNames);
+    char *strPathToMask="/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-front-complete";//runqiu: add binary mask
+    vector<string> vstrMaskLeft;
+    LoadMasks(trPathToMask, vstrMaskLeft, vTimestamps);
+
+    const int nImages = vstrImageLeft.size();
+
+    // Create SLAM system. It initializes all system threads and gets ready to process frames.
+    ORB_SLAM2::System SLAM(argvtemp[1],argvtemp[2],ORB_SLAM2::System::STEREO,true);
+
+    // Vector for tracking time statistics
+    vector<float> vTimesTrack;
+    vTimesTrack.resize(nImages);
+
+    cout << endl << "-------" << endl;
+    cout << "Start processing sequence ..." << endl;
+    cout << "Images in the sequence: " << nImages << endl << endl;   
+
+    // Main loop    
+    cv::Mat imLeft, imRight;
+    cv::Mat imMask;
+    //cv::Mat imTf;//runqiu:get the pose of current frame
+    // vector<std::string> tfRecordLine;
+    for(int ni=0; ni<nImages; ni++)
+    {
+        // Read left and right images from file
+        imLeft = cv::imread(vstrImageLeft[ni],CV_LOAD_IMAGE_UNCHANGED);
+        imRight = cv::imread(vstrImageRight[ni],CV_LOAD_IMAGE_UNCHANGED);
+        //runqiu: read mask image from file
+        imMask = cv::imread(vstrMaskLeft[ni], CV_LOAD_IMAGE_UNCHANGED);
+        //cout << endl << std::to_string(ni)+" finish read!" << endl;
+        double tframe = vTimestamps[ni];
+
+        if(imLeft.empty())
+        {
+            cerr << endl << "Failed to load image at: "
+                 << string(vstrImageLeft[ni]) << endl;
+            return 1;
+        }
+
+#ifdef COMPILEDWITHC11
+        std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+#else
+        std::chrono::monotonic_clock::time_point t1 = std::chrono::monotonic_clock::now();
+#endif
+
+        // Pass the images to the SLAM system
+        SLAM.TrackStereo(imLeft,imRight,tframe,ni,imMask);//runqiu: add binary mask
+        //cv::Mat Rwc = imTf.rowRange(0,3).colRange(0,3).t();//rotation information
+        //cv::Mat twc = -Rwc*imTf.rowRange(0,3).col(3);//translation information
+        //vector<float> q = ORB_SLAM2::Converter::toQuaternion(Rwc);
+        //vector<float> t = twc.cols;
+
+#ifdef COMPILEDWITHC11
+        std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
+#else
+        std::chrono::monotonic_clock::time_point t2 = std::chrono::monotonic_clock::now();
+#endif
+
+        double ttrack= std::chrono::duration_cast<std::chrono::duration<double> >(t2 - t1).count();
+
+        vTimesTrack[ni]=ttrack;
+
+        // Wait to load the next frame
+        double T=0;
+        if(ni<nImages-1)
+            T = vTimestamps[ni+1]-tframe;
+        else if(ni>0)
+            T = tframe-vTimestamps[ni-1];
+
+        if(ttrack<T)
+            usleep((T-ttrack)*1e6);
+    }
+
+    // Stop all threads
+    SLAM.Shutdown();
+
+    // Tracking time statistics
+    sort(vTimesTrack.begin(),vTimesTrack.end());
+    float totaltime = 0;
+    for(int ni=0; ni<nImages; ni++)
+    {
+        totaltime+=vTimesTrack[ni];
+    }
+    cout << "-------" << endl << endl;
+    cout << "median tracking time: " << vTimesTrack[nImages/2] << endl;
+    cout << "mean tracking time: " << totaltime/nImages << endl;
+
+    // Save camera trajectory
+    //SLAM.SaveTrajectoryKITTI("CameraTrajectory.txt");
+    SLAM.SaveKeyFrameTrajectoryAndMap(SLAM.GetMap(), "KeyFrameTrajectory.txt", "MapPoints.txt");//runqiu:to save the point cloud map with trajectory
+    SLAM.SaveTrajectoryKITTI("CameraTrajectory.txt");
+
+    return 0;
 }
