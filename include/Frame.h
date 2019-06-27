@@ -62,7 +62,7 @@ public:
 
     // Extract ORB on the image. 0 for left image and 1 for right image.
     //void ExtractORB(int flag, const cv::Mat &im);
-    void ExtractORB_mask(int flag, const cv::Mat &im, int nFrame);//runqiu:add mask to 
+    void ExtractORB_mask(int flag, const cv::Mat &im, int nFrame, const cv::Mat &imMask);//runqiu:add mask to 
 
     // Compute Bag of Words representation.
     void ComputeBoW();

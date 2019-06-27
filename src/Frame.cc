@@ -134,7 +134,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
     // ORB extraction
-    ExtractORB_mask(0,imGray,0);
+    ExtractORB_mask(0,imGray,0,cv::Mat());
 
     N = mvKeys.size();
 
@@ -189,7 +189,7 @@ Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractormask* e
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
     // ORB extraction
-    ExtractORB_mask(0,imGray,0);
+    ExtractORB_mask(0,imGray,0,cv::Mat());
 
     N = mvKeys.size();//mvkeys is the final output of ORBextractor
 

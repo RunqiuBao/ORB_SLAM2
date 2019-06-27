@@ -9,8 +9,8 @@ ENDIF()
 
 MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall   -O3 -march=native")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall   -O3 -march=native")
 
 # Check C++11 or C++0x support
 include(CheckCXXCompilerFlag)
@@ -31,7 +31,7 @@ endif()
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
 #set(CMAKE_PREFIX_PATH "")
-#set(OpenCV_INCLUDE_DIRS "/home/runqiu/Downloads/opencv-3.2.0/include")
+#set(OpenCV_INCLUDE_DIRS "/home/runqiu/todai/opencv-3.2.0/include")
 find_package(OpenCV 3.2.0 REQUIRED)
 
 #find_package(OpenCV 3.0 QUIET)

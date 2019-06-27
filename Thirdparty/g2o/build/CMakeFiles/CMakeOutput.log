@@ -1,4 +1,4 @@
-The system is: Linux - 4.15.0-45-generic - x86_64
+The system is: Linux - 4.15.0-52-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/cc 
 Build flags: 
@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/3.5.1/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/3.5.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,33 +23,33 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_59bfc/fast"
-/usr/bin/make -f CMakeFiles/cmTC_59bfc.dir/build.make CMakeFiles/cmTC_59bfc.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_59bfc.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_59bfc.dir/testCCompiler.c.o   -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_59bfc
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59bfc.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_59bfc.dir/testCCompiler.c.o  -o cmTC_59bfc -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_19126/fast"
+/usr/bin/make -f CMakeFiles/cmTC_19126.dir/build.make CMakeFiles/cmTC_19126.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_19126.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_19126.dir/testCCompiler.c.o   -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_19126
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_19126.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_19126.dir/testCCompiler.c.o  -o cmTC_19126 -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_725dc/fast"
-/usr/bin/make -f CMakeFiles/cmTC_725dc.dir/build.make CMakeFiles/cmTC_725dc.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_725dc
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_725dc.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o  -o cmTC_725dc -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_7b169/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7b169.dir/build.make CMakeFiles/cmTC_7b169.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_7b169
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b169.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o  -o cmTC_7b169 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
@@ -59,23 +59,23 @@ Thread model: posix
 gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.11) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_725dc' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc9O7OOm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_725dc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7b169' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccz45vAU.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_7b169 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_725dc/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_725dc.dir/build.make CMakeFiles/cmTC_725dc.dir/build]
-  ignore line: [make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_725dc]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_725dc.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o  -o cmTC_725dc -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_7b169/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_7b169.dir/build.make CMakeFiles/cmTC_7b169.dir/build]
+  ignore line: [make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_7b169]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b169.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o  -o cmTC_7b169 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
@@ -85,13 +85,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.11) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_725dc' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc9O7OOm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_725dc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7b169' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccz45vAU.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_7b169 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc9O7OOm.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccz45vAU.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -109,7 +109,7 @@ Parsed C implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_725dc] ==> ignore
+    arg [cmTC_7b169] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
@@ -121,7 +121,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_725dc.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_7b169.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -153,17 +153,17 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ca41b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ca41b.dir/build.make CMakeFiles/cmTC_ca41b.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_ca41b.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_ca41b.dir/feature_tests.c.o   -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_ca41b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ca41b.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_ca41b.dir/feature_tests.c.o  -o cmTC_ca41b -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_088a8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_088a8.dir/build.make CMakeFiles/cmTC_088a8.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_088a8.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_088a8.dir/feature_tests.c.o   -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_088a8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_088a8.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_088a8.dir/feature_tests.c.o  -o cmTC_088a8 -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -173,17 +173,17 @@ make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_be811/fast"
-/usr/bin/make -f CMakeFiles/cmTC_be811.dir/build.make CMakeFiles/cmTC_be811.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_be811.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_be811.dir/feature_tests.c.o   -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_be811
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be811.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_be811.dir/feature_tests.c.o  -o cmTC_be811 -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_5340b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5340b.dir/build.make CMakeFiles/cmTC_5340b.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5340b.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_5340b.dir/feature_tests.c.o   -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_5340b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5340b.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_5340b.dir/feature_tests.c.o  -o cmTC_5340b -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -193,17 +193,17 @@ make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_dc29f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_dc29f.dir/build.make CMakeFiles/cmTC_dc29f.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_dc29f.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_dc29f.dir/feature_tests.c.o   -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_dc29f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dc29f.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_dc29f.dir/feature_tests.c.o  -o cmTC_dc29f -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_bef71/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bef71.dir/build.make CMakeFiles/cmTC_bef71.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bef71.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_bef71.dir/feature_tests.c.o   -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_bef71
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bef71.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_bef71.dir/feature_tests.c.o  -o cmTC_bef71 -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -211,30 +211,30 @@ make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ce4a2/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ce4a2.dir/build.make CMakeFiles/cmTC_ce4a2.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ce4a2.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_ce4a2.dir/testCXXCompiler.cxx.o -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_ce4a2
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce4a2.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_ce4a2.dir/testCXXCompiler.cxx.o  -o cmTC_ce4a2 -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_e4ef0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e4ef0.dir/build.make CMakeFiles/cmTC_e4ef0.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e4ef0.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_e4ef0.dir/testCXXCompiler.cxx.o -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_e4ef0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e4ef0.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_e4ef0.dir/testCXXCompiler.cxx.o  -o cmTC_e4ef0 -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f8194/fast"
-/usr/bin/make -f CMakeFiles/cmTC_f8194.dir/build.make CMakeFiles/cmTC_f8194.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_f8194
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f8194.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f8194 -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_a8e76/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a8e76.dir/build.make CMakeFiles/cmTC_a8e76.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_a8e76
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8e76.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_a8e76 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
@@ -244,23 +244,23 @@ Thread model: posix
 gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.11) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f8194' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccb7ozIe.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_f8194 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a8e76' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccqeMtRJ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_a8e76 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_f8194/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_f8194.dir/build.make CMakeFiles/cmTC_f8194.dir/build]
-  ignore line: [make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_f8194]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f8194.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f8194 -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_a8e76/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_a8e76.dir/build.make CMakeFiles/cmTC_a8e76.dir/build]
+  ignore line: [make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_a8e76]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8e76.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_a8e76 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
@@ -270,13 +270,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.11) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f8194' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccb7ozIe.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_f8194 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a8e76' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccqeMtRJ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_a8e76 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccb7ozIe.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccqeMtRJ.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -294,7 +294,7 @@ Parsed CXX implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_f8194] ==> ignore
+    arg [cmTC_a8e76] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
@@ -306,7 +306,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_f8194.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_a8e76.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -336,17 +336,17 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ba58a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ba58a.dir/build.make CMakeFiles/cmTC_ba58a.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ba58a.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_ba58a.dir/feature_tests.cxx.o -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_ba58a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ba58a.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_ba58a.dir/feature_tests.cxx.o  -o cmTC_ba58a -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_e2dda/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e2dda.dir/build.make CMakeFiles/cmTC_e2dda.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e2dda.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_e2dda.dir/feature_tests.cxx.o -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e2dda
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2dda.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_e2dda.dir/feature_tests.cxx.o  -o cmTC_e2dda -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -409,17 +409,17 @@ make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0d70e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0d70e.dir/build.make CMakeFiles/cmTC_0d70e.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_0d70e.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_0d70e.dir/feature_tests.cxx.o -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_0d70e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0d70e.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_0d70e.dir/feature_tests.cxx.o  -o cmTC_0d70e -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_cad42/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cad42.dir/build.make CMakeFiles/cmTC_cad42.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cad42.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_cad42.dir/feature_tests.cxx.o -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_cad42
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cad42.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_cad42.dir/feature_tests.cxx.o  -o cmTC_cad42 -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -482,17 +482,17 @@ make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b5c48/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b5c48.dir/build.make CMakeFiles/cmTC_b5c48.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b5c48.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_b5c48.dir/feature_tests.cxx.o -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_b5c48
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b5c48.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_b5c48.dir/feature_tests.cxx.o  -o cmTC_b5c48 -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_815f7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_815f7.dir/build.make CMakeFiles/cmTC_815f7.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_815f7.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_815f7.dir/feature_tests.cxx.o -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_815f7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_815f7.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_815f7.dir/feature_tests.cxx.o  -o cmTC_815f7 -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -553,17 +553,17 @@ make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
 Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED succeeded with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_cd92c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_cd92c.dir/build.make CMakeFiles/cmTC_cd92c.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_cd92c.dir/src.c.o
-/usr/bin/cc    -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTC_cd92c.dir/src.c.o   -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_cd92c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd92c.dir/link.txt --verbose=1
-/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTC_cd92c.dir/src.c.o  -o cmTC_cd92c -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_12e5d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_12e5d.dir/build.make CMakeFiles/cmTC_12e5d.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_12e5d.dir/src.c.o
+/usr/bin/cc    -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTC_12e5d.dir/src.c.o   -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_12e5d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_12e5d.dir/link.txt --verbose=1
+/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTC_12e5d.dir/src.c.o  -o cmTC_12e5d -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 Source file was:
 
@@ -577,17 +577,17 @@ int main() {
 }
 
 Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED succeeded with the following output:
-Change Dir: /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
+Change Dir: /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_bea07/fast"
-/usr/bin/make -f CMakeFiles/cmTC_bea07.dir/build.make CMakeFiles/cmTC_bea07.dir/build
-make[1]: Entering directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_bea07.dir/src.cxx.o
-/usr/bin/c++     -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTC_bea07.dir/src.cxx.o -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_bea07
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bea07.dir/link.txt --verbose=1
-/usr/bin/c++    -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTC_bea07.dir/src.cxx.o  -o cmTC_bea07 -rdynamic 
-make[1]: Leaving directory '/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_66dae/fast"
+/usr/bin/make -f CMakeFiles/cmTC_66dae.dir/build.make CMakeFiles/cmTC_66dae.dir/build
+make[1]: Entering directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_66dae.dir/src.cxx.o
+/usr/bin/c++     -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTC_66dae.dir/src.cxx.o -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_66dae
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66dae.dir/link.txt --verbose=1
+/usr/bin/c++    -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTC_66dae.dir/src.cxx.o  -o cmTC_66dae -rdynamic 
+make[1]: Leaving directory '/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/build/CMakeFiles/CMakeTmp'
 
 Source file was:
 

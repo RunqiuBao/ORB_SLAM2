@@ -763,11 +763,13 @@ vector<cv::KeyPoint> ORBextractormask::DistributeOctTree(const vector<cv::KeyPoi
     return vResultKeys;
 }
 
-void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKeypoints, int nFrame, int flag, cv::Mat maskimage)
+void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKeypoints, int nFrame, int flag, cv::Mat maskimage)//runqiu statis for debug
 {
     allKeypoints.resize(nlevels);
 
     const float W = 30;
+    int mydo=0;
+    int nonmydo=0;
 
     for (int level = 0; level < nlevels; ++level)
     {
@@ -818,27 +820,42 @@ void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKey
 
                 if(!vKeysCell.empty())
                 {
+
                     for(vector<cv::KeyPoint>::iterator vit=vKeysCell.begin(); vit!=vKeysCell.end();vit++)
                     {
                         //runqiu:get the global coordinates
                         (*vit).pt.x+=j*wCell;
                         (*vit).pt.y+=i*hCell;
 
+                        float imgSizeX=(float)maskimage.cols;//runqiu: caution the image size!!
+                        float imgSizeY=(float)maskimage.rows;
+                        float currentLevelX=mvImagePyramid[level].cols;
+                        float currentLevelY=mvImagePyramid[level].rows;
+                        float xchecktemp=(*vit).pt.x;
+                        float ychecktemp=(*vit).pt.y;
+                        float xcheck=xchecktemp*imgSizeX/currentLevelX;//runqiu:change the (*vit).pt.x&y in current level of scale pyramid to imagesize x&y
+                        float ycheck=ychecktemp*imgSizeY/currentLevelY;
+
                         int filterFlag=-1;
                         //maskRect = maskFunction(nFrame,0);
                         if(flag==0)
-                            filterFlag = maskFunction_bin((*vit).pt.x, (*vit).pt.y, maskimage);//runqiu:pt.x, pt.y are float
+                            filterFlag = maskFunction_bin(xcheck, ycheck, maskimage);//runqiu:pt.x, pt.y are float
                         else 
                             filterFlag=0;//runqiu: no need to filter right camera image
                         
-                        if(filterFlag==1 && flag==0)//runqiu: flag==0 means left camera image
+                        if(filterFlag==1 && flag==0){//runqiu: flag==0 means left camera image
+                            mydo++;
                             continue;//runqiu:add DO filter here!!
+                        }
                         else
                         {
+                            nonmydo++;
                             vToDistributeKeys.push_back(*vit);
                         }
                         
                     }
+                    
+
                 }
 
             }
@@ -1156,14 +1173,53 @@ int ORBextractormask::maskFunction_bin(float x_ori, float y_ori, cv::Mat maskima
     int x2 = x1;
     int y2 = y1+1;
     int x3 = x1+1;
-    int y3 = x1+1;
+    int y3 = y1+1;
     int x4 = x1+1;
     int y4 = y1;
     uchar mythreshold = 255;
-    if(maskimage.at<uchar>(x1,y1)==mythreshold || maskimage.at<uchar>(x2,y2)==mythreshold || maskimage.at<uchar>(x3,y3)==mythreshold || maskimage.at<uchar>(x4,y4)==mythreshold)
+    if(maskimage.at<uchar>(y1,x1)==mythreshold || maskimage.at<uchar>(y2,x2)==mythreshold || maskimage.at<uchar>(y3,x3)==mythreshold || maskimage.at<uchar>(y4,x4)==mythreshold)
         return 1;
     else 
         return 0;
+}
+
+int ORBextractormask::maskFunction_bin2(float x_ori, float y_ori, cv::Mat maskimage){
+    int x1 = (int)x_ori;
+    int y1 = (int)y_ori;
+    int a = 80;
+    int rows = maskimage.rows;
+    int cols = maskimage.cols;
+    int xb = x1;
+    int yb = ((y1-(int)a/2)>0)?(y1-(int)a/2):0;
+    int xe = x1;
+    int ye = (rows>(y1+(int)a/2))?(y1+(int)a/2):rows;
+    int result=0;
+    for(int i=0;i<=(ye-yb);i++){
+        int xcheck=xb;
+        int ycheck=yb+i;
+        uchar mythreshold = 255;
+        if(maskimage.at<uchar>(ycheck,xcheck)==mythreshold){
+            result=1;
+            break;
+        }
+    }
+    if(result==0){
+        xb = ((x1-(int)a/2)>0)?(x1-(int)a/2):0;
+        yb = y1;
+        xe = (cols>(x1+(int)a/2))?(x1+(int)a/2):cols;
+        ye = y1;
+        for(int i=0;i<=(xe-xb);i++){
+            int xcheck=xb+i;
+            int ycheck=yb;
+            uchar mythreshold = 255;
+            if(maskimage.at<uchar>(ycheck,xcheck)==mythreshold){
+                result=1;
+                break;
+            }
+        }
+    }
+
+    return result;
 }
 
 //runqiu:maskFunction

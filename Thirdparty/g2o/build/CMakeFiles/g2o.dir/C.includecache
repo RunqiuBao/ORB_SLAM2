@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/g2o/stuff/os_specific.c
+/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/g2o/stuff/os_specific.c
 os_specific.h
-/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/g2o/stuff/os_specific.h
+/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/g2o/stuff/os_specific.h
 
-/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/g2o/stuff/os_specific.h
+/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Thirdparty/g2o/g2o/stuff/os_specific.h
 stdio.h
 -
 stdlib.h

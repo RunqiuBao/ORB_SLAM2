@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Monocular/mono_euroc.cc" "/media/chino/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles/mono_euroc.dir/Examples/Monocular/mono_euroc.cc.o"
+  "/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Examples/Monocular/mono_euroc.cc" "/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles/mono_euroc.dir/Examples/Monocular/mono_euroc.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,15 +18,15 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../"
   "../include"
   "/usr/include/eigen3"
-  "/usr/local/lib/cmake/Pangolin/../../../include"
-  "/opt/ros/kinetic/include/opencv-3.3.1-dev"
-  "/opt/ros/kinetic/include/opencv-3.3.1-dev/opencv"
+  "/home/runqiu/todai/Pangolin/include"
+  "/home/runqiu/todai/Pangolin/build/src/include"
   "/usr/local/include"
+  "/usr/local/include/opencv"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/media/chino/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles/ORB_SLAM2.dir/DependInfo.cmake"
+  "/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles/ORB_SLAM2.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

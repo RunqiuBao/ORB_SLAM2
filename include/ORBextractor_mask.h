@@ -87,6 +87,7 @@ public:
 protected:
     std::vector<float> maskFunction(int frameNumber, int flag);//runqiu:mask for DO
     int maskFunction_bin(float x, float y, cv::Mat maskimage);
+    int maskFunction_bin2(float x, float y, cv::Mat maskimage);//add margin
 
     void ComputePyramid(cv::Mat image);
     void ComputeKeyPointsOctTree(std::vector<std::vector<cv::KeyPoint> >& allKeypoints, int nFrame, int flag, cv::Mat maskimage);    

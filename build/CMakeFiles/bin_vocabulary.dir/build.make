@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/chino/HD-PSFU3/testbar/ORB_SLAM2
+CMAKE_SOURCE_DIR = /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/chino/HD-PSFU3/testbar/ORB_SLAM2/build
+CMAKE_BINARY_DIR = /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/bin_vocabulary.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/bin_vocabulary.dir/flags.make
 
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o: CMakeFiles/bin_vocabulary.dir/flags.make
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o: ../tools/bin_vocabulary.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/chino/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o -c /media/chino/HD-PSFU3/testbar/ORB_SLAM2/tools/bin_vocabulary.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o -c /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/tools/bin_vocabulary.cc
 
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/chino/HD-PSFU3/testbar/ORB_SLAM2/tools/bin_vocabulary.cc > CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/tools/bin_vocabulary.cc > CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.i
 
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/chino/HD-PSFU3/testbar/ORB_SLAM2/tools/bin_vocabulary.cc -o CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/tools/bin_vocabulary.cc -o CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.s
 
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o.requires:
 
@@ -91,66 +91,72 @@ bin_vocabulary_EXTERNAL_OBJECTS =
 ../tools/bin_vocabulary: CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o
 ../tools/bin_vocabulary: CMakeFiles/bin_vocabulary.dir/build.make
 ../tools/bin_vocabulary: ../lib/libORB_SLAM2.so
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_stitching3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_superres3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_videostab3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_aruco3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_bgsegm3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_bioinspired3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_ccalib3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_cvv3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_dpm3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_face3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_photo3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_fuzzy3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_hdf3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_img_hash3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_line_descriptor3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_optflow3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_reg3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_rgbd3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_saliency3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_stereo3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_structured_light3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_viz3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_phase_unwrapping3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_surface_matching3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_tracking3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_datasets3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_plot3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_text3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_dnn3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_xfeatures2d3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_ml3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_shape3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_video3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_ximgproc3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_calib3d3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_features2d3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_flann3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_highgui3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_videoio3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_xobjdetect3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgcodecs3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_objdetect3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_xphoto3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgproc3.so.3.3.1
-../tools/bin_vocabulary: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_core3.so.3.3.1
-../tools/bin_vocabulary: /usr/local/lib/libpangolin.so
+../tools/bin_vocabulary: /usr/local/lib/libopencv_stitching.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_superres.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_videostab.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_aruco.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_bgsegm.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_bioinspired.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_ccalib.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_cvv.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_dpm.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_freetype.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_fuzzy.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_line_descriptor.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_optflow.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_reg.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_saliency.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_stereo.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_structured_light.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_phase_unwrapping.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_rgbd.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_surface_matching.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_tracking.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_datasets.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_dnn.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_face.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_plot.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_text.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_xfeatures2d.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_shape.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_video.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_ximgproc.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_calib3d.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_features2d.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_flann.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_xobjdetect.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_objdetect.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_ml.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_xphoto.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_highgui.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_photo.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_videoio.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_imgcodecs.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_imgproc.so.3.2.0
+../tools/bin_vocabulary: /usr/local/lib/libopencv_core.so.3.2.0
+../tools/bin_vocabulary: /home/runqiu/todai/Pangolin/build/src/libpangolin.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libGLU.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libGL.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libGLEW.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libX11.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libXext.so
+../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libdc1394.so
+../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libavcodec.so
+../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libavformat.so
+../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libavutil.so
+../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libswscale.so
+../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libavdevice.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libpng.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libz.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libjpeg.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libtiff.so
 ../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/libIlmImf.so
+../tools/bin_vocabulary: /usr/local/lib/libzstd.so
+../tools/bin_vocabulary: /usr/lib/x86_64-linux-gnu/liblz4.so
 ../tools/bin_vocabulary: ../Thirdparty/DBoW2/lib/libDBoW2.so
 ../tools/bin_vocabulary: ../Thirdparty/g2o/lib/libg2o.so
 ../tools/bin_vocabulary: CMakeFiles/bin_vocabulary.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/chino/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../tools/bin_vocabulary"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../tools/bin_vocabulary"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bin_vocabulary.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -167,6 +173,6 @@ CMakeFiles/bin_vocabulary.dir/clean:
 .PHONY : CMakeFiles/bin_vocabulary.dir/clean
 
 CMakeFiles/bin_vocabulary.dir/depend:
-	cd /media/chino/HD-PSFU3/testbar/ORB_SLAM2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/chino/HD-PSFU3/testbar/ORB_SLAM2 /media/chino/HD-PSFU3/testbar/ORB_SLAM2 /media/chino/HD-PSFU3/testbar/ORB_SLAM2/build /media/chino/HD-PSFU3/testbar/ORB_SLAM2/build /media/chino/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles/bin_vocabulary.dir/DependInfo.cmake --color=$(COLOR)
+	cd /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2 /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2 /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build /media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/build/CMakeFiles/bin_vocabulary.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/bin_vocabulary.dir/depend
 

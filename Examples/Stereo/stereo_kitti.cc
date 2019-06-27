@@ -26,18 +26,21 @@
 #include<chrono>
 
 #include<opencv2/core/core.hpp>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include<System.h>
 
 using namespace std;
 
 
-void LoadImages(const string &strPathToSevector<string> &vstrImageRight,> &vstrImageLeft,
-                vector<string> &vstrImagevector<string> &vstrImageRight, &vTimestamps, vector<string> &vImgNames)
+void LoadImages(const string &strPathToSequence, vector<string> &vstrImageLeft,
+                vector<string> &vstrImageRight, vector<double> &vTimestamps, vector<string> &vImgNames)
 {
     ifstream fTimes;
-    string strPathTimeFile = strPathToSeqvector<string> &vstrImageRight,
-    fTimes.open(strPathTimeFile.c_str());vector<string> &vstrImageRight,
+    string strPathTimeFile = strPathToSequence + "/mymav.txt";
+    fTimes.open(strPathTimeFile.c_str());
     while(!fTimes.eof())
     {
         string s;
@@ -57,12 +60,12 @@ void LoadImages(const string &strPathToSevector<string> &vstrImageRight,> &vstrI
         }
     }
 
-    //string strPrefixLeft = strPathToSequence + "/left/undisR-1k/";
-    //string strPrefixRight = strPathToSequence + "/right/undisR-1k/";
+    string strPrefixLeft = strPathToSequence + "/left/undisR-1k-newcalib/";
+    string strPrefixRight = strPathToSequence + "/right/undisR-1k-newcalib/";
     //string strPrefixLeft = strPathToSequence + "/left/datat2_1080r/";
     //string strPrefixRight = strPathToSequence + "/right/datat2_1080r/";
-    string strPrefixLeft = strPathToSequence + "/left/";
-    string strPrefixRight = strPathToSequence + "/right/";
+    //string strPrefixLeft = strPathToSequence + "/left/";
+    //string strPrefixRight = strPathToSequence + "/right/";
 
     const int nTimes = vTimestamps.size();
     vstrImageLeft.resize(nTimes);
@@ -79,18 +82,18 @@ void LoadImages(const string &strPathToSevector<string> &vstrImageRight,> &vstrI
     }
 }
 
-void LoadMasks(const string &strPathToMask, vector<string> &vstrMaskLeft, vector<double> &vTimestamps)
+void LoadMasks(const string &strPathToMask, vector<string> &vstrMaskLeft, vector<string> &vImgNames)
 {
-    string strPrefixMaskLeft = strPathToSequence + "/leftmask/";
+    string strPrefixMaskLeft = strPathToMask + "/leftmask-margin0.17-noperson/";
 
-    const int nTimes = vTimestamps.size();
+    const int nTimes = vImgNames.size();
     vstrMaskLeft.resize(nTimes);
 
     for(int i=0; i<nTimes; i++)
     {
         stringstream ss;
         ss << setfill('0') << setw(6) << i;
-        vstrMaskLeft[i] = strPrefixMaskLeft + vTimestamps[i] + ".png";
+        vstrMaskLeft[i] = strPrefixMaskLeft + vImgNames[i] + ".png";
     }
 }
 
@@ -107,12 +110,12 @@ int main(int argc, char **argv)
     vector<string> vstrImageRight;
     vector<double> vTimestamps;
     vector<string> vImgNames;
-    char *argvtemp[4]={" ","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/chino/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro12.yaml","/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-front-complete"};
+    char *argvtemp[4]={" ","/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Vocabulary/ORBvoc.bin","/media/runqiu/HD-PSFU3/testbar/ORB_SLAM2/Examples/Stereo/gopro34new.yaml","/media/runqiu/HD-PSFU3/testbar/slamDataset/stereo/mymav-stereo-do"};
  
-    LoadImages(string(argvtemp[3]), vstrImageLeft, vstrImageRight, vTimestamps, vImgNames);
-    char *strPathToMask="/media/chino/HD-PSFU3/testbar/slamDataset/stereo/mymav-front-complete";//runqiu: add binary mask
+    LoadImages(string(argvtemp[3]), vstrImageLeft, vstrImageRight, vTimestamps, vImgNames);//runqiu: vTimestamps is double numbers, vImgNames is exactly storing the image names
+    char *strPathToMask="/media/runqiu/HD-PSFU3/testbar/slamDataset/stereo/mymav-stereo-do";//runqiu: add binary mask
     vector<string> vstrMaskLeft;
-    LoadMasks(trPathToMask, vstrMaskLeft, vTimestamps);
+    LoadMasks(string(strPathToMask), vstrMaskLeft, vImgNames);
 
     const int nImages = vstrImageLeft.size();
 
@@ -141,6 +144,7 @@ int main(int argc, char **argv)
         imMask = cv::imread(vstrMaskLeft[ni], CV_LOAD_IMAGE_UNCHANGED);
         //cout << endl << std::to_string(ni)+" finish read!" << endl;
         double tframe = vTimestamps[ni];
+        cout << vImgNames[ni] << endl << endl;
 
         if(imLeft.empty())
         {
@@ -156,6 +160,12 @@ int main(int argc, char **argv)
 #endif
 
         // Pass the images to the SLAM system
+        //uchar thisone1=imMask.at<uchar>(22,424);
+        //uchar thisone2=imMask.at<uchar>(24,814);
+        //uchar thisone3=imMask.at<uchar>(322,816);
+        //uchar thisone4=imMask.at<uchar>(322,425);
+        //uchar mythreshold=255;
+        //bool temp=(thisone1==mythreshold);
         SLAM.TrackStereo(imLeft,imRight,tframe,ni,imMask);//runqiu: add binary mask
         //cv::Mat Rwc = imTf.rowRange(0,3).colRange(0,3).t();//rotation information
         //cv::Mat twc = -Rwc*imTf.rowRange(0,3).col(3);//translation information
