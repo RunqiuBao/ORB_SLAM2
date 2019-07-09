@@ -52,7 +52,7 @@ public:
     Frame(const Frame &frame);
 
     // Constructor for stereo cameras.
-    Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractormask* extractorLeft, ORBextractormask* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth, const cv::Mat &imMask);
+    Frame(int nFrame, const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractormask* extractorLeft, ORBextractormask* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth, const cv::Mat &imMask, const cv::Mat &imMaskPixel);
 
     // Constructor for RGB-D cameras.
     Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeStamp, ORBextractormask* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
@@ -62,7 +62,7 @@ public:
 
     // Extract ORB on the image. 0 for left image and 1 for right image.
     //void ExtractORB(int flag, const cv::Mat &im);
-    void ExtractORB_mask(int flag, const cv::Mat &im, int nFrame, const cv::Mat &imMask);//runqiu:add mask to 
+    void ExtractORB_mask(int flag, const cv::Mat &im, int nFrame, const cv::Mat &imMask, const cv::Mat &imMaskPixel);//runqiu:add mask to 
 
     // Compute Bag of Words representation.
     void ComputeBoW();

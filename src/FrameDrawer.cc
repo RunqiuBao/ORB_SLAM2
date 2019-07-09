@@ -25,6 +25,7 @@
 #include <opencv2/highgui/highgui.hpp>
 
 #include<mutex>
+#include "MaskInfo.h"
 
 namespace ORB_SLAM2
 {
@@ -167,7 +168,23 @@ void FrameDrawer::DrawTextInfo(cv::Mat &im, int nState, cv::Mat &imText)
 void FrameDrawer::Update(Tracking *pTracker)
 {
     unique_lock<mutex> lock(mMutex);
-    pTracker->mImGray.copyTo(mIm);
+    //pTracker->mImGray.copyTo(mIm);//runqiu: here it gets the real image to be shown
+    pTracker->mImGrayYOLO.copyTo(mIm);
+    //runqiu: put text on the moving object
+    MaskSet masksInThisFrame=pTracker->masksThisFrame;
+    for(int i=0;i<masksInThisFrame.labels.size();i++){
+        int pointx=(int)(masksInThisFrame.bboxes.at(i).lux+masksInThisFrame.bboxes.at(i).rlx)/2;
+        int pointy=(int)(masksInThisFrame.bboxes.at(i).luy+masksInThisFrame.bboxes.at(i).rly)/2;
+        cv::putText(mIm, //target image
+            "Moving Object!", //text
+            cv::Point(pointx, pointy), //top-left position
+            cv::FONT_HERSHEY_DUPLEX,
+            1.0,
+            CV_RGB(118, 185, 0), //font color
+            2);
+        
+    }
+
     mvCurrentKeys=pTracker->mCurrentFrame.mvKeys;
     N = mvCurrentKeys.size();
     mvbVO = vector<bool>(N,false);

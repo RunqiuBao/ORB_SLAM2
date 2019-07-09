@@ -58,7 +58,7 @@ public:
     // Mask is ignored in the current implementation.
     void operator()( cv::InputArray image, cv::InputArray mask,
       std::vector<cv::KeyPoint>& keypoints,
-      cv::OutputArray descriptors, int nFrame, int flag);
+      cv::OutputArray descriptors, int nFrame, int flag, cv::InputArray maskPixel);
 
     int inline GetLevels(){
         return nlevels;}
@@ -86,11 +86,11 @@ public:
 
 protected:
     std::vector<float> maskFunction(int frameNumber, int flag);//runqiu:mask for DO
-    int maskFunction_bin(float x, float y, cv::Mat maskimage);
-    int maskFunction_bin2(float x, float y, cv::Mat maskimage);//add margin
+    int maskFunction_bin(float x, float y, cv::Mat maskimage, cv::Mat maskimagePixel);
+    int maskFunction_bin2(float x, float y, cv::Mat maskimage, cv::Mat maskimagePixel);//add margin
 
     void ComputePyramid(cv::Mat image);
-    void ComputeKeyPointsOctTree(std::vector<std::vector<cv::KeyPoint> >& allKeypoints, int nFrame, int flag, cv::Mat maskimage);    
+    void ComputeKeyPointsOctTree(std::vector<std::vector<cv::KeyPoint> >& allKeypoints, int nFrame, int flag, cv::Mat maskimage, cv::Mat maskimagePixel);    
     std::vector<cv::KeyPoint> DistributeOctTree(const std::vector<cv::KeyPoint>& vToDistributeKeys, const int &minX,
                                            const int &maxX, const int &minY, const int &maxY, const int &nFeatures, const int &level);
 

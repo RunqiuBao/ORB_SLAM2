@@ -29,6 +29,7 @@
 #include<opencv2/features2d/features2d.hpp>
 
 #include<mutex>
+#include "MaskInfo.h"
 
 
 namespace ORB_SLAM2

@@ -37,6 +37,8 @@
 #include "Initializer.h"
 #include "MapDrawer.h"
 #include "System.h"
+#include "MaskInfo.h"
+
 
 #include <mutex>
 
@@ -58,7 +60,7 @@ public:
              KeyFrameDatabase* pKFDB, const string &strSettingPath, const int sensor);
 
     // Preprocess the input and call Track(). Extract features and performs stereo matching.
-    cv::Mat GrabImageStereo(const cv::Mat &imRectLeft,const cv::Mat &imRectRight, const double &timestamp, const int &nFrame, const cv::Mat &imRectMask);
+    cv::Mat GrabImageStereo(const cv::Mat &imRectLeft,const cv::Mat &imRectRight, const double &timestamp, const int &nFrame, const cv::Mat &imRectMask, const cv::Mat &imRectMaskPixel, const cv::Mat &imRectMaskedFrame, const MaskSet &masksForThisFrame);
     cv::Mat GrabImageRGBD(const cv::Mat &imRGB,const cv::Mat &imD, const double &timestamp);
     cv::Mat GrabImageMonocular(const cv::Mat &im, const double &timestamp);
 
@@ -95,6 +97,8 @@ public:
     // Current Frame
     Frame mCurrentFrame;
     cv::Mat mImGray;
+    cv::Mat mImGrayYOLO;//runqiu: for showing result of YOLO
+    MaskSet masksThisFrame;
 
     // Initialization Variables (Monocular)
     std::vector<int> mvIniLastMatches;

@@ -763,7 +763,7 @@ vector<cv::KeyPoint> ORBextractormask::DistributeOctTree(const vector<cv::KeyPoi
     return vResultKeys;
 }
 
-void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKeypoints, int nFrame, int flag, cv::Mat maskimage)//runqiu statis for debug
+void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKeypoints, int nFrame, int flag, cv::Mat maskimage, cv::Mat maskimagePixel)//runqiu statis for debug
 {
     allKeypoints.resize(nlevels);
 
@@ -839,7 +839,7 @@ void ORBextractormask::ComputeKeyPointsOctTree(vector<vector<KeyPoint> >& allKey
                         int filterFlag=-1;
                         //maskRect = maskFunction(nFrame,0);
                         if(flag==0)
-                            filterFlag = maskFunction_bin(xcheck, ycheck, maskimage);//runqiu:pt.x, pt.y are float
+                            filterFlag = maskFunction_bin(xcheck, ycheck, maskimage, maskimagePixel);//runqiu:pt.x, pt.y are float
                         else 
                             filterFlag=0;//runqiu: no need to filter right camera image
                         
@@ -1074,7 +1074,7 @@ static void computeDescriptors(const Mat& image, vector<KeyPoint>& keypoints, Ma
 }
 
 void ORBextractormask::operator()( InputArray _image, InputArray _mask, vector<KeyPoint>& _keypoints,
-                      OutputArray _descriptors, int nFrame, int flag)
+                      OutputArray _descriptors, int nFrame, int flag, InputArray _maskPixel)
 { 
     if(_image.empty())
         return;
@@ -1083,13 +1083,14 @@ void ORBextractormask::operator()( InputArray _image, InputArray _mask, vector<K
     assert(image.type() == CV_8UC1 );
 
     Mat maskimage=_mask.getMat();
+    Mat maskimagePixel=_maskPixel.getMat();
         
 
     // Pre-compute the scale pyramid
     ComputePyramid(image);
 
     vector < vector<KeyPoint> > allKeypoints;
-    ComputeKeyPointsOctTree(allKeypoints,nFrame,flag,maskimage);//runqiu: inside we filter the feature points
+    ComputeKeyPointsOctTree(allKeypoints,nFrame,flag,maskimage,maskimagePixel);//runqiu: inside we filter the feature points
     //ComputeKeyPointsOld(allKeypoints);
 
     Mat descriptors;
@@ -1167,7 +1168,7 @@ void ORBextractormask::ComputePyramid(cv::Mat image)
 
 }
 
-int ORBextractormask::maskFunction_bin(float x_ori, float y_ori, cv::Mat maskimage){
+int ORBextractormask::maskFunction_bin(float x_ori, float y_ori, cv::Mat maskimage, cv::Mat maskimagePixel){
     int x1 = (int)x_ori;
     int y1 = (int)y_ori;
     int x2 = x1;
@@ -1183,7 +1184,7 @@ int ORBextractormask::maskFunction_bin(float x_ori, float y_ori, cv::Mat maskima
         return 0;
 }
 
-int ORBextractormask::maskFunction_bin2(float x_ori, float y_ori, cv::Mat maskimage){
+int ORBextractormask::maskFunction_bin2(float x_ori, float y_ori, cv::Mat maskimage, cv::Mat maskimagePixel){
     int x1 = (int)x_ori;
     int y1 = (int)y_ori;
     int a = 80;

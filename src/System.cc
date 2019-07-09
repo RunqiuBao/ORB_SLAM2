@@ -29,6 +29,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "MaskInfo.h"
+
 //runqiu:bin-voca
 bool has_suffix(const std::string &str, const std::string &suffix) {
   std::size_t index = str.find(suffix, str.size() - suffix.size());
@@ -134,7 +136,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     mpLoopCloser->SetLocalMapper(mpLocalMapper);
 }
 
-cv::Mat System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timestamp, const int &nFrame, const cv::Mat &imMask)
+cv::Mat System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timestamp, const int &nFrame, const cv::Mat &imMask, const cv::Mat &imMaskPixel, const cv::Mat &imMaskedFrame, MaskSet masksForThisFrame)
 {
     if(mSensor!=STEREO)
     {
@@ -176,7 +178,7 @@ cv::Mat System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const
     }
     }
 
-    cv::Mat Tcw = mpTracker->GrabImageStereo(imLeft,imRight,timestamp,nFrame,imMask);
+    cv::Mat Tcw = mpTracker->GrabImageStereo(imLeft,imRight,timestamp,nFrame,imMask,imMaskPixel,imMaskedFrame,masksForThisFrame);
 
     unique_lock<mutex> lock2(mMutexState);
     mTrackingState = mpTracker->mState;

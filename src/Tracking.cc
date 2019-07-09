@@ -40,6 +40,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "MaskInfo.h"
 
 
 using namespace std;
@@ -169,11 +170,14 @@ void Tracking::SetViewer(Viewer *pViewer)
 }
 
 
-cv::Mat Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRectRight, const double &timestamp, const int &nFrame, const cv::Mat &imRectMask)
+cv::Mat Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRectRight, const double &timestamp, const int &nFrame, const cv::Mat &imRectMask, const cv::Mat &imRectMaskPixel, const cv::Mat &imRectMaskedFrame, const MaskSet &masksForThisFrame)
 {
     mImGray = imRectLeft;
+    mImGrayYOLO=imRectMaskedFrame;//runqiu: pass masked image to this tracker
+    masksThisFrame=masksForThisFrame;//runqiu: pass semantic labels to this tracker
     cv::Mat imGrayRight = imRectRight;
     cv::Mat imBinMask = imRectMask;
+    cv::Mat imBinMaskPixel = imRectMaskPixel;
 
     if(mImGray.channels()==3)
     {
@@ -202,7 +206,7 @@ cv::Mat Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRe
         }
     }
 
-    mCurrentFrame = Frame(nFrame,mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth,imBinMask);
+    mCurrentFrame = Frame(nFrame,mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth,imBinMask,imBinMaskPixel);
 
     //runqiu:add mask here and kill all features on DO
     //mCurrentFrame.killPointsOnDO(nFrame, "left");
